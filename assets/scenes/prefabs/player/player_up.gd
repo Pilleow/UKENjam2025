@@ -5,7 +5,7 @@ const SPEED = 300.0
 @onready var player_master = get_tree().current_scene.find_child("Player")
 
 func _physics_process(delta: float) -> void:
-	if player_master.player_state != Util.PLAYER_STATES.UP:
+	if player_master.player_state != Util.PLAYER_STATES.UNDERTALE:
 		return
 	
 	var direction_x := Input.get_axis("left", "right")
