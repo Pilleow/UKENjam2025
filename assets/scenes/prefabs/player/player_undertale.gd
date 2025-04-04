@@ -2,10 +2,18 @@ extends CharacterBody2D
 
 const SPEED = 300.0
 
+var hp = 1.0
+
 @onready var player_master = get_tree().current_scene.find_child("Player")
 
+func take_damage(dmg: float):
+	hp -= dmg
+	if hp <= 0:
+		hp = 0
+		get_tree().reload_current_scene()
+
 func _physics_process(delta: float) -> void:
-	if player_master.player_state != Util.PLAYER_STATES.UP:
+	if player_master.player_state != Util.PLAYER_STATES.UNDERTALE:
 		return
 	
 	var direction_x := Input.get_axis("left", "right")

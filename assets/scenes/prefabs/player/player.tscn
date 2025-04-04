@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://cbat5l3u4tssm"]
+[gd_scene load_steps=10 format=3 uid="uid://cbat5l3u4tssm"]
 
 [ext_resource type="Script" path="res://assets/scenes/prefabs/player/player_master.gd" id="1_k58qf"]
 [ext_resource type="Script" path="res://assets/scenes/prefabs/player/player_down.gd" id="1_uagjw"]
-[ext_resource type="Script" path="res://assets/scenes/prefabs/player/player_up.gd" id="2_g5gmb"]
+[ext_resource type="Script" path="res://assets/scenes/prefabs/player/hud.gd" id="2_28i0e"]
+[ext_resource type="Script" path="res://assets/scenes/prefabs/player/player_undertale.gd" id="2_g5gmb"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_e5qll"]
 radius = 13.0
@@ -14,7 +15,7 @@ size = Vector2(68, 364)
 size = Vector2(546.25, 63)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6a38v"]
-size = Vector2(38, 64)
+size = Vector2(38, 63)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8ba0a"]
 size = Vector2(88, 76)
@@ -23,6 +24,7 @@ size = Vector2(88, 76)
 script = ExtResource("1_k58qf")
 
 [node name="HUD" type="CanvasLayer" parent="."]
+script = ExtResource("2_28i0e")
 
 [node name="Border" type="ColorRect" parent="HUD"]
 offset_left = -83.0
@@ -33,65 +35,75 @@ scale = Vector2(0.911841, 3.98262)
 pivot_offset = Vector2(677, 186)
 color = Color(0, 0, 0, 0.780392)
 
-[node name="UndertaleArea" type="ColorRect" parent="HUD"]
-offset_left = 387.0
+[node name="UndertaleWrapper" type="Node2D" parent="HUD"]
+
+[node name="UndertaleArea" type="ColorRect" parent="HUD/UndertaleWrapper"]
+offset_left = 364.0
 offset_top = 202.0
-offset_right = 811.0
+offset_right = 788.0
 offset_bottom = 454.0
 color = Color(0.697228, 0.697227, 0.697228, 1)
 
-[node name="UpPlayer" type="CharacterBody2D" parent="HUD"]
-position = Vector2(599, 312)
+[node name="UndertalePlayer" type="CharacterBody2D" parent="HUD/UndertaleWrapper" groups=["BlocksBullets", "ReceivesDamage"]]
+position = Vector2(572, 324)
 collision_layer = 2
 collision_mask = 2
 motion_mode = 1
 script = ExtResource("2_g5gmb")
 
-[node name="PlayerSprite" type="ColorRect" parent="HUD/UpPlayer"]
+[node name="PlayerSprite" type="ColorRect" parent="HUD/UndertaleWrapper/UndertalePlayer"]
 offset_left = -13.0
 offset_top = -13.0
 offset_right = 13.0
 offset_bottom = 13.0
 color = Color(0.0392331, 0.341878, 0.459005, 1)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HUD/UpPlayer"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HUD/UndertaleWrapper/UndertalePlayer"]
 shape = SubResource("CircleShape2D_e5qll")
 
-[node name="BorderCollider1" type="StaticBody2D" parent="HUD"]
-position = Vector2(374, 288)
+[node name="BorderCollider1" type="StaticBody2D" parent="HUD/UndertaleWrapper"]
+position = Vector2(352, 288)
 collision_layer = 2
 collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HUD/BorderCollider1"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HUD/UndertaleWrapper/BorderCollider1"]
 position = Vector2(-21.25, 45)
 shape = SubResource("RectangleShape2D_ggur1")
 
-[node name="BorderCollider2" type="StaticBody2D" parent="HUD"]
-position = Vector2(470, 212)
+[node name="BorderCollider2" type="StaticBody2D" parent="HUD/UndertaleWrapper"]
+position = Vector2(448, 212)
 collision_layer = 2
 collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HUD/BorderCollider2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HUD/UndertaleWrapper/BorderCollider2"]
 position = Vector2(105, -41.75)
 shape = SubResource("RectangleShape2D_kqffk")
 
-[node name="BorderCollider3" type="StaticBody2D" parent="HUD"]
-position = Vector2(488, 527)
+[node name="BorderCollider3" type="StaticBody2D" parent="HUD/UndertaleWrapper"]
+position = Vector2(466, 527)
 collision_layer = 2
 collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HUD/BorderCollider3"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HUD/UndertaleWrapper/BorderCollider3"]
 position = Vector2(105, -41.5)
 shape = SubResource("RectangleShape2D_kqffk")
 
-[node name="BorderCollider4" type="StaticBody2D" parent="HUD"]
-position = Vector2(866, 288)
+[node name="BorderCollider4" type="StaticBody2D" parent="HUD/UndertaleWrapper"]
+position = Vector2(844, 288)
 collision_layer = 2
 collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HUD/BorderCollider4"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HUD/UndertaleWrapper/BorderCollider4"]
 position = Vector2(-21, 45)
 shape = SubResource("RectangleShape2D_ggur1")
+
+[node name="DoorOpenWrapper" type="Node2D" parent="HUD"]
+
+[node name="KeySprite" type="AnimatedSprite2D" parent="HUD/DoorOpenWrapper"]
+
+[node name="HoleBackSprite" type="Sprite2D" parent="HUD/DoorOpenWrapper"]
+
+[node name="HoleFrontSprite" type="Sprite2D" parent="HUD/DoorOpenWrapper"]
 
 [node name="DownPlayer" type="CharacterBody2D" parent="."]
 script = ExtResource("1_uagjw")
@@ -104,6 +116,7 @@ offset_bottom = 32.0
 color = Color(0.117647, 0.603922, 0.796078, 1)
 
 [node name="Collider" type="CollisionShape2D" parent="DownPlayer"]
+position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_6a38v")
 
 [node name="InteractArea" type="Area2D" parent="DownPlayer"]
@@ -113,7 +126,8 @@ position = Vector2(0, -6)
 shape = SubResource("RectangleShape2D_8ba0a")
 
 [node name="Camera2D" type="Camera2D" parent="DownPlayer"]
-position = Vector2(0, -180)
+position = Vector2(0, -29)
+zoom = Vector2(1.505, 1.505)
 position_smoothing_enabled = true
 position_smoothing_speed = 7.0
 
@@ -123,3 +137,6 @@ offset_left = -1155.0
 offset_top = -746.0
 offset_right = 1155.0
 offset_bottom = 746.0
+
+[connection signal="area_entered" from="DownPlayer/InteractArea" to="." method="_on_interact_area_area_entered"]
+[connection signal="area_exited" from="DownPlayer/InteractArea" to="." method="_on_interact_area_area_exited"]
