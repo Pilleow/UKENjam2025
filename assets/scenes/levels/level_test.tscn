@@ -8,5 +8,17 @@
 [node name="Player" parent="." instance=ExtResource("1_c6kj5")]
 
 [node name="Wall" parent="." instance=ExtResource("2_6rgdu")]
-position = Vector2(0, 123)
-scale = Vector2(29.76, 1)
+position = Vector2(0, 339)
+scale = Vector2(52.08, 10.8)
+
+[node name="Wall4" parent="." instance=ExtResource("2_6rgdu")]
+position = Vector2(0, -411)
+scale = Vector2(52.08, 10.8)
+
+[node name="Wall2" parent="." instance=ExtResource("2_6rgdu")]
+position = Vector2(-996, -84)
+scale = Vector2(11.7592, 11.0813)
+
+[node name="Wall3" parent="." instance=ExtResource("2_6rgdu")]
+position = Vector2(1024, -124)
+scale = Vector2(11.7592, 11.0813)
