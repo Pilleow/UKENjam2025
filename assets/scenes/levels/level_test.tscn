@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://c7kea4hc4ceus"]
+
+[ext_resource type="PackedScene" uid="uid://cbat5l3u4tssm" path="res://assets/scenes/prefabs/player/player.tscn" id="1_c6kj5"]
+[ext_resource type="PackedScene" uid="uid://cjc8cy2sfh8df" path="res://assets/scenes/prefabs/objects/wall.tscn" id="2_6rgdu"]
+
+[node name="LevelTest" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_c6kj5")]
+
+[node name="Wall" parent="." instance=ExtResource("2_6rgdu")]
+position = Vector2(0, 123)
+scale = Vector2(29.76, 1)
