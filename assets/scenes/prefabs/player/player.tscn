@@ -6,7 +6,7 @@
 [ext_resource type="Script" path="res://assets/scenes/prefabs/player/player_undertale.gd" id="2_g5gmb"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_e5qll"]
-radius = 13.0
+radius = 12.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ggur1"]
 size = Vector2(68, 364)

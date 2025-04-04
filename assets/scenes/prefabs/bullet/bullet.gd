@@ -15,11 +15,12 @@ func set_initial(pos, velocity, sp):
 	speed = sp
 
 func _ready():
+	$ColorRect.color.h = float(int(Time.get_ticks_msec()) % 10000) / 10000.0
 	$ColorRect.modulate.a = 0
 
 func _physics_process(delta: float) -> void:
 	if lifetime < lifespan and $ColorRect.modulate.a < 1:
-		$ColorRect.modulate.a = min(1, lifetime)
+		$ColorRect.modulate.a = min(1, lifetime * 4)
 	if lifespan - lifetime < 1:
 		$ColorRect.modulate.a = max(0, lifespan - lifetime) 
 	rotate(delta * 8)
