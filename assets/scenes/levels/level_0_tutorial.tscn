@@ -1,0 +1,94 @@
+[gd_scene load_steps=13 format=3 uid="uid://bp4wb5kasqj34"]
+
+[ext_resource type="Script" path="res://assets/scenes/levels/level.gd" id="1_kj1n2"]
+[ext_resource type="PackedScene" uid="uid://cbat5l3u4tssm" path="res://assets/scenes/prefabs/player/player.tscn" id="2_1ce48"]
+[ext_resource type="PackedScene" uid="uid://cjc8cy2sfh8df" path="res://assets/scenes/prefabs/objects/wall.tscn" id="3_5ale1"]
+[ext_resource type="Texture2D" uid="uid://dg4bv8i7lfs1a" path="res://assets/graphics/images/level0/tutorial sciana.png" id="3_omrky"]
+[ext_resource type="PackedScene" uid="uid://dkwqogi3j6yw6" path="res://assets/scenes/prefabs/objects/door.tscn" id="4_pswx8"]
+[ext_resource type="PackedScene" uid="uid://cv5wevah2b43v" path="res://assets/scenes/prefabs/fight_area/fight_area.tscn" id="5_gcl8p"]
+[ext_resource type="PackedScene" uid="uid://dlodba0505j1p" path="res://assets/scenes/prefabs/cutscene/cutscene_start.tscn" id="6_7412n"]
+[ext_resource type="Script" path="res://assets/scenes/levels/gornik.gd" id="6_yhdxe"]
+[ext_resource type="PackedScene" uid="uid://cahvwaf1x143d" path="res://assets/scenes/prefabs/label/floating_popping_up_label.tscn" id="7_3e2ei"]
+[ext_resource type="Texture2D" uid="uid://bwvsvtiuwa6gv" path="res://assets/graphics/sprites/chars/mag.png" id="7_h75uq"]
+[ext_resource type="Texture2D" uid="uid://cv1a78h41cuvy" path="res://assets/graphics/images/level0/tutorial ołtarz.png" id="9_idhnw"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_d3b4l"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_h75uq")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
+
+[node name="Level0Tutorial" type="Node2D"]
+script = ExtResource("1_kj1n2")
+
+[node name="Wall" parent="." instance=ExtResource("3_5ale1")]
+position = Vector2(840, 239)
+scale = Vector2(81.2233, 7.29952)
+
+[node name="Wall2" parent="." instance=ExtResource("3_5ale1")]
+position = Vector2(840, -312)
+scale = Vector2(81.2233, 7.29952)
+
+[node name="Wall4" parent="." instance=ExtResource("3_5ale1")]
+position = Vector2(-701, 28)
+scale = Vector2(22.0793, 9.09016)
+
+[node name="Wall5" parent="." instance=ExtResource("3_5ale1")]
+position = Vector2(823, 44)
+scale = Vector2(22.0793, 9.09016)
+
+[node name="Lvl1Room1" type="Sprite2D" parent="."]
+texture_filter = 3
+position = Vector2(61, -15)
+scale = Vector2(2, 2)
+texture = ExtResource("3_omrky")
+
+[node name="TutorialOłtarz" type="Sprite2D" parent="."]
+texture_filter = 3
+position = Vector2(143, 8)
+scale = Vector2(2, 2)
+texture = ExtResource("9_idhnw")
+
+[node name="NPC" type="AnimatedSprite2D" parent="."]
+texture_filter = 3
+position = Vector2(17, -1)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_d3b4l")
+autoplay = "default"
+script = ExtResource("6_yhdxe")
+
+[node name="Player" parent="." instance=ExtResource("2_1ce48")]
+position = Vector2(62, 4)
+show_battle_hints = true
+init_x = -60.0
+
+[node name="Door" parent="." instance=ExtResource("4_pswx8")]
+position = Vector2(62, -3)
+
+[node name="FightArea" parent="." instance=ExtResource("5_gcl8p")]
+position = Vector2(143, -13)
+scale = Vector2(0.551139, 0.522821)
+bullet_groups_to_send = 15
+move_to_scene = "res://assets/scenes/levels/level_1a.tscn"
+
+[node name="Cutscenka" parent="." groups=["AutoInteract"] instance=ExtResource("6_7412n")]
+position = Vector2(36, -4)
+scale = Vector2(0.386084, 0.393157)
+chosen_cutscene = 1
+item = "KEY"
+
+[node name="FloatingPoppingUpLabel" parent="." instance=ExtResource("7_3e2ei")]
+position = Vector2(17, -32)
+texts = Array[String](["Twoje poświęcenie nie zostanie zapomniane.", "Spożyj swoją pierwszą klątwę."])
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = 54.0
+offset_top = -95.0
+offset_right = 70.0
+offset_bottom = -48.0
+color = Color(0, 0, 0, 1)

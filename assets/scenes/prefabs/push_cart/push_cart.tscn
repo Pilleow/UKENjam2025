@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=3 uid="uid://dxo4mgdhua071"]
+
+[ext_resource type="Script" path="res://assets/scenes/prefabs/move_through_door/move_through_door.gd" id="1_1eteb"]
+[ext_resource type="Texture2D" uid="uid://d1cqcoys6wtyc" path="res://assets/graphics/sprites/wózek.png" id="2_tp8xi"]
+[ext_resource type="Texture2D" uid="uid://bxue6ubsasefm" path="res://assets/graphics/sprites/kółko.png" id="3_5gu0b"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_74xwv"]
+size = Vector2(122, 86)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_orhon"]
+size = Vector2(62, 86)
+
+[node name="MoveThroughDoor" type="Node2D" groups=["Interactable", "SideDoor"]]
+script = ExtResource("1_1eteb")
+
+[node name="Interact" type="Area2D" parent="."]
+position = Vector2(0, -27)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interact"]
+shape = SubResource("RectangleShape2D_74xwv")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(0, -27)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_orhon")
+
+[node name="Wózek" type="Sprite2D" parent="."]
+texture_filter = 3
+position = Vector2(-3, -12)
+scale = Vector2(2, 2)
+texture = ExtResource("2_tp8xi")
+
+[node name="Kółko" type="Sprite2D" parent="."]
+texture_filter = 3
+position = Vector2(-12, 11)
+scale = Vector2(2, 2)
+texture = ExtResource("3_5gu0b")

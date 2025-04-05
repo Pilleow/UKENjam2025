@@ -1,0 +1,97 @@
+[gd_scene load_steps=12 format=3 uid="uid://bfb0fgr1q2v34"]
+
+[ext_resource type="Script" path="res://assets/scenes/levels/level.gd" id="1_p4xdc"]
+[ext_resource type="Script" path="res://assets/scenes/prefabs/objects/wall.gd" id="2_ou6fy"]
+[ext_resource type="PackedScene" uid="uid://cjc8cy2sfh8df" path="res://assets/scenes/prefabs/objects/wall.tscn" id="3_lwvnh"]
+[ext_resource type="Texture2D" uid="uid://d2d8t7643yiwu" path="res://assets/graphics/images/level2/lvl2.3 background.png" id="4_kqce1"]
+[ext_resource type="PackedScene" uid="uid://cbat5l3u4tssm" path="res://assets/scenes/prefabs/player/player.tscn" id="5_ehcqa"]
+[ext_resource type="Shader" path="res://assets/scenes/levels/level_2c.gdshader" id="6_dsdib"]
+[ext_resource type="Texture2D" uid="uid://d0l3rv3kach06" path="res://assets/graphics/images/level2/lvl2.3 outline.png" id="6_ehgfj"]
+[ext_resource type="Texture2D" uid="uid://ccrcuvarpajci" path="res://assets/graphics/sprites/chars/gornik.png" id="6_gmqny"]
+[ext_resource type="PackedScene" uid="uid://cv5wevah2b43v" path="res://assets/scenes/prefabs/fight_area/fight_area.tscn" id="9_pvnib"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qxt2x"]
+size = Vector2(56, 56)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jc2gy"]
+shader = ExtResource("6_dsdib")
+
+[node name="Level2a" type="Node2D"]
+script = ExtResource("1_p4xdc")
+rotation_dampener = 70.0
+
+[node name="Wall4" type="StaticBody2D" parent="."]
+z_index = -3575
+position = Vector2(-849, 280)
+scale = Vector2(22.0793, 9.09016)
+script = ExtResource("2_ou6fy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall4"]
+position = Vector2(-7.88068, -19.1416)
+shape = SubResource("RectangleShape2D_qxt2x")
+
+[node name="Wall5" parent="." instance=ExtResource("3_lwvnh")]
+z_index = -3575
+position = Vector2(944, -29)
+scale = Vector2(22.0793, 9.09016)
+
+[node name="Lvl1Room1" type="Sprite2D" parent="."]
+texture_filter = 3
+position = Vector2(-78, -37)
+scale = Vector2(2, 2)
+texture = ExtResource("4_kqce1")
+
+[node name="Player" parent="." instance=ExtResource("5_ehcqa")]
+position = Vector2(0, 27)
+anchor_camera = false
+init_x = -382.0
+
+[node name="Gornik" type="Sprite2D" parent="."]
+texture_filter = 3
+material = SubResource("ShaderMaterial_jc2gy")
+position = Vector2(119, -6)
+scale = Vector2(4, 4)
+texture = ExtResource("6_gmqny")
+
+[node name="Lvl1Room2" type="Sprite2D" parent="."]
+modulate = Color(0.6, 0.6, 0.6, 1)
+texture_filter = 3
+position = Vector2(-14, -15)
+scale = Vector2(2, 2)
+texture = ExtResource("6_ehgfj")
+
+[node name="FightArea" parent="." instance=ExtResource("9_pvnib")]
+position = Vector2(205, 15)
+scale = Vector2(1.79114, 0.522821)
+bullet_delay = 0.35
+bullet_group_delay = 0.45
+bullet_speed = 4.0
+move_to_scene = "res://assets/scenes/levels/level_3c.tscn"
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -529.0
+offset_top = 95.0
+offset_right = 548.0
+offset_bottom = 233.0
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect3" type="ColorRect" parent="."]
+offset_left = -594.0
+offset_top = -197.0
+offset_right = -424.0
+offset_bottom = 129.0
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect4" type="ColorRect" parent="."]
+offset_left = 387.0
+offset_top = -202.0
+offset_right = 557.0
+offset_bottom = 124.0
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+offset_left = -554.0
+offset_top = -312.0
+offset_right = 523.0
+offset_bottom = -174.0
+color = Color(0, 0, 0, 1)

@@ -1,26 +1,40 @@
 extends CharacterBody2D
 
-const SPEED = 300.0
+const SPEED = 250.0
 const NOTIFY_AFK_AFTER_SECONDS = 2.0
 
 var time_since_player_moved : float = 0.0
 var notified = false
 
-var hp = 1.0
+var max_hp = 3
+var hp = max_hp
+
+var locked_movement = false
 
 @onready var player_master = get_tree().current_scene.find_child("Player")
 
-func take_damage(dmg: float):
+func lock_movement():
+	locked_movement = true
+
+func unlock_movement():
+	locked_movement = false
+
+func _ready():
+	SignalBus.player_lock_input.connect(lock_movement)
+	SignalBus.player_unlock_input.connect(unlock_movement)
+
+func take_damage(dmg: int):
 	hp -= dmg
+	modulate.a = float(hp) / float(max_hp)
 	if hp <= 0:
 		hp = 0
-		get_tree().reload_current_scene()
 
 func _physics_process(delta: float) -> void:
 	if player_master.player_state != Util.PLAYER_STATES.UNDERTALE:
 		time_since_player_moved = 0
 		return
 		
+
 	time_since_player_moved += delta
 	if time_since_player_moved > NOTIFY_AFK_AFTER_SECONDS:
 		if not notified:
@@ -28,6 +42,9 @@ func _physics_process(delta: float) -> void:
 			notified = true
 	else:
 		notified = false
+	
+	if locked_movement:
+		return
 	
 	var direction_x := Input.get_axis("left", "right")
 	if direction_x:
@@ -42,5 +59,5 @@ func _physics_process(delta: float) -> void:
 		time_since_player_moved = 0
 	else:
 		velocity.y = move_toward(velocity.y, 0, SPEED)
-		
+	
 	move_and_slide()

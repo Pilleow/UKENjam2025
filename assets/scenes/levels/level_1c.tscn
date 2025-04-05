@@ -1,0 +1,49 @@
+[gd_scene load_steps=6 format=3 uid="uid://frjx6y2iwhaa"]
+
+[ext_resource type="PackedScene" uid="uid://cjc8cy2sfh8df" path="res://assets/scenes/prefabs/objects/wall.tscn" id="1_nw0vu"]
+[ext_resource type="Texture2D" uid="uid://u3e68iyf51f" path="res://assets/graphics/images/level1/lvl1 room3 .png" id="2_7oj3r"]
+[ext_resource type="PackedScene" uid="uid://cbat5l3u4tssm" path="res://assets/scenes/prefabs/player/player.tscn" id="3_posyn"]
+[ext_resource type="PackedScene" uid="uid://cv5wevah2b43v" path="res://assets/scenes/prefabs/fight_area/fight_area.tscn" id="4_2bdyr"]
+[ext_resource type="PackedScene" uid="uid://ba7h224kcugro" path="res://assets/scenes/prefabs/take_out_letter/take_out_letter.tscn" id="5_kuboj"]
+
+[node name="Level1a" type="Node2D"]
+
+[node name="Wall" parent="." instance=ExtResource("1_nw0vu")]
+z_index = -3575
+position = Vector2(564, 239)
+scale = Vector2(81.2233, 7.29952)
+
+[node name="Wall2" parent="." instance=ExtResource("1_nw0vu")]
+z_index = -3575
+position = Vector2(733, -309)
+scale = Vector2(81.2233, 7.29952)
+
+[node name="Wall4" parent="." instance=ExtResource("1_nw0vu")]
+z_index = -3575
+position = Vector2(-758, 35)
+scale = Vector2(22.0793, 9.09016)
+
+[node name="Wall5" parent="." instance=ExtResource("1_nw0vu")]
+z_index = -3575
+position = Vector2(766, -6)
+scale = Vector2(22.0793, 9.09016)
+
+[node name="Lvl1Room1" type="Sprite2D" parent="."]
+texture_filter = 3
+position = Vector2(4, -22)
+scale = Vector2(2, 2)
+texture = ExtResource("2_7oj3r")
+
+[node name="Player" parent="." instance=ExtResource("3_posyn")]
+position = Vector2(0, -3)
+init_x = -123.0
+
+[node name="TakeOutLetter" parent="." instance=ExtResource("5_kuboj")]
+visible = false
+position = Vector2(110, -18)
+interact_cue = "Zniszcz barykadę"
+
+[node name="FightArea" parent="." instance=ExtResource("4_2bdyr")]
+position = Vector2(126, -18)
+scale = Vector2(0.551139, 0.522821)
+move_to_scene = "res://assets/scenes/levels/level_2a.tscn"

@@ -1,0 +1,68 @@
+[gd_scene load_steps=9 format=3 uid="uid://32g674apgd36"]
+
+[ext_resource type="Script" path="res://assets/scenes/levels/level.gd" id="1_6umvi"]
+[ext_resource type="PackedScene" uid="uid://cjc8cy2sfh8df" path="res://assets/scenes/prefabs/objects/wall.tscn" id="2_185yr"]
+[ext_resource type="Texture2D" uid="uid://v0lgpdw3tn4" path="res://assets/graphics/images/level3/chmury.png" id="3_3y6sa"]
+[ext_resource type="Texture2D" uid="uid://b2h5kfsbvogwj" path="res://assets/graphics/images/level3/trawa.png" id="4_va848"]
+[ext_resource type="PackedScene" uid="uid://cbat5l3u4tssm" path="res://assets/scenes/prefabs/player/player.tscn" id="7_au460"]
+[ext_resource type="Texture2D" uid="uid://qxyd5fa5i08d" path="res://assets/graphics/images/level3/domek.png" id="8_mv5vg"]
+[ext_resource type="PackedScene" uid="uid://cahvwaf1x143d" path="res://assets/scenes/prefabs/label/floating_popping_up_label.tscn" id="9_r8k3d"]
+[ext_resource type="PackedScene" uid="uid://dlodba0505j1p" path="res://assets/scenes/prefabs/cutscene/cutscene_start.tscn" id="10_uw2rx"]
+
+[node name="Level1a" type="Node2D"]
+script = ExtResource("1_6umvi")
+rotation_dampener = 40.0
+
+[node name="Wall" parent="." instance=ExtResource("2_185yr")]
+z_index = -3575
+position = Vector2(564, 239)
+scale = Vector2(81.2233, 7.29952)
+
+[node name="Wall4" parent="." instance=ExtResource("2_185yr")]
+z_index = -3575
+position = Vector2(-651, 35)
+scale = Vector2(22.0793, 9.09016)
+
+[node name="Wall5" parent="." instance=ExtResource("2_185yr")]
+z_index = -3575
+position = Vector2(1284, -13)
+scale = Vector2(22.0793, 9.09016)
+
+[node name="Parallax2D" type="Parallax2D" parent="."]
+scroll_scale = Vector2(-0.5, 0)
+follow_viewport = false
+
+[node name="Lvl1Room3" type="Sprite2D" parent="Parallax2D"]
+texture_filter = 3
+position = Vector2(486, 64)
+scale = Vector2(2, 2)
+texture = ExtResource("3_3y6sa")
+
+[node name="Lvl1Room1" type="Sprite2D" parent="."]
+texture_filter = 3
+position = Vector2(219, 78)
+scale = Vector2(2, 2)
+texture = ExtResource("4_va848")
+
+[node name="Player" parent="." instance=ExtResource("7_au460")]
+position = Vector2(0, -10)
+
+[node name="Lvl1Room2" type="Sprite2D" parent="."]
+texture_filter = 3
+position = Vector2(231, -31)
+scale = Vector2(2, 2)
+texture = ExtResource("8_mv5vg")
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
+position = Vector2(215, -149)
+energy = 0.6
+blend_mode = 2
+
+[node name="FloatingPoppingUpLabel" parent="." instance=ExtResource("9_r8k3d")]
+position = Vector2(683, -83)
+texts = Array[String](["“Gdybym tylko dosięgnął” ", "“Gdybym go złapał”"])
+
+[node name="Cutscenka" parent="." groups=["AutoInteract"] instance=ExtResource("10_uw2rx")]
+position = Vector2(6.99999, -4)
+scale = Vector2(0.386084, 0.393157)
+chosen_cutscene = 5

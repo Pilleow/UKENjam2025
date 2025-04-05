@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://cahvwaf1x143d"]
+
+[ext_resource type="Script" path="res://assets/scenes/prefabs/label/floating_popping_up_label.gd" id="1_203q5"]
+[ext_resource type="Theme" uid="uid://y2k1ulo02lh" path="res://assets/other/theme.tres" id="1_urym3"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ws7n2"]
+light_mode = 1
+
+[node name="FloatingPoppingUpLabel" type="Node2D"]
+position = Vector2(2, 1)
+script = ExtResource("1_203q5")
+texts = Array[String](["Twoje poświęcenie nie zostanie zapomniane.", "Weź ten klucz i spożyj swoją pierwszą klątwę.", "Przejdź przez bramę i dokończ swój chrzest."])
+
+[node name="Label" type="Label" parent="."]
+z_index = 4096
+material = SubResource("CanvasItemMaterial_ws7n2")
+offset_left = -373.0
+offset_top = -20.0
+offset_right = 373.0
+offset_bottom = 21.0
+pivot_offset = Vector2(373, 20)
+theme = ExtResource("1_urym3")
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 5
+text = "Coś tam fajnego"
+horizontal_alignment = 1
+vertical_alignment = 1
