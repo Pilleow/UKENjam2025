@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://3ccqj8anx7ib"]
+
+[ext_resource type="Script" path="res://assets/scenes/prefabs/move_through_door/move_through_door.gd" id="1_py0cv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_74xwv"]
+size = Vector2(92, 86)
+
+[node name="MoveThroughDoor" type="Node2D" groups=["Interactable", "SideDoor"]]
+script = ExtResource("1_py0cv")
+
+[node name="Interact" type="Area2D" parent="."]
+position = Vector2(0, -27)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interact"]
+shape = SubResource("RectangleShape2D_74xwv")

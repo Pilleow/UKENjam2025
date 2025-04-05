@@ -1,0 +1,54 @@
+[gd_scene load_steps=7 format=3 uid="uid://ckvbpucnptmcr"]
+
+[ext_resource type="PackedScene" uid="uid://cjc8cy2sfh8df" path="res://assets/scenes/prefabs/objects/wall.tscn" id="1_ay21n"]
+[ext_resource type="Script" path="res://assets/scenes/levels/level.gd" id="1_bcqhe"]
+[ext_resource type="Texture2D" uid="uid://2yv7toxm3ro2" path="res://assets/graphics/images/level1/lvl1 room1.png" id="2_0xw6n"]
+[ext_resource type="PackedScene" uid="uid://cbat5l3u4tssm" path="res://assets/scenes/prefabs/player/player.tscn" id="3_udh7o"]
+[ext_resource type="PackedScene" uid="uid://3ccqj8anx7ib" path="res://assets/scenes/prefabs/move_through_door/move_through_door.tscn" id="4_co4dh"]
+[ext_resource type="PackedScene" uid="uid://dlodba0505j1p" path="res://assets/scenes/prefabs/cutscene/cutscene_start.tscn" id="6_o5l5u"]
+
+[node name="Level1a" type="Node2D"]
+script = ExtResource("1_bcqhe")
+rotation_dampener = 100.0
+
+[node name="Wall" parent="." instance=ExtResource("1_ay21n")]
+z_index = -3575
+position = Vector2(564, 239)
+scale = Vector2(81.2233, 7.29952)
+
+[node name="Wall2" parent="." instance=ExtResource("1_ay21n")]
+z_index = -3575
+position = Vector2(733, -309)
+scale = Vector2(81.2233, 7.29952)
+
+[node name="Wall4" parent="." instance=ExtResource("1_ay21n")]
+z_index = -3575
+position = Vector2(-758, 35)
+scale = Vector2(22.0793, 9.09016)
+
+[node name="Wall5" parent="." instance=ExtResource("1_ay21n")]
+z_index = -3575
+position = Vector2(766, -6)
+scale = Vector2(22.0793, 9.09016)
+
+[node name="Lvl1Room1" type="Sprite2D" parent="."]
+texture_filter = 3
+position = Vector2(108, -18)
+scale = Vector2(2, 2)
+texture = ExtResource("2_0xw6n")
+
+[node name="Player" parent="." instance=ExtResource("3_udh7o")]
+position = Vector2(0, 4)
+init_x = -123.0
+
+[node name="MoveThroughDoor" parent="." instance=ExtResource("4_co4dh")]
+position = Vector2(175, -7)
+interact_cue = "Przejdź do kuchni"
+move_to = "res://assets/scenes/levels/level_1b.tscn"
+
+[node name="Cutscenka" parent="." groups=["AutoInteract"] instance=ExtResource("6_o5l5u")]
+position = Vector2(-108, -4)
+scale = Vector2(0.386084, 0.393157)
+chosen_cutscene = 2
+interact_cue = ""
+item = ""

@@ -1,9 +1,16 @@
-[gd_scene load_steps=2 format=3 uid="uid://cjc8cy2sfh8df"]
+[gd_scene load_steps=4 format=3 uid="uid://cjc8cy2sfh8df"]
+
+[ext_resource type="Script" path="res://assets/scenes/prefabs/objects/wall.gd" id="1_h0pmy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qxt2x"]
 size = Vector2(56, 56)
 
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_2a6ys"]
+polygon = PackedVector2Array(-28, -28, 28, -28, 28, 28, -28, 28)
+
 [node name="Wall" type="StaticBody2D"]
+z_index = -4096
+script = ExtResource("1_h0pmy")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_qxt2x")
@@ -13,4 +20,7 @@ offset_left = -28.0
 offset_top = -28.0
 offset_right = 28.0
 offset_bottom = 28.0
-color = Color(1, 0.552941, 1, 1)
+color = Color(0.93709, 0.106577, 0.512682, 1)
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_2a6ys")

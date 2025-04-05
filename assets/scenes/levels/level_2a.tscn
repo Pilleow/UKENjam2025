@@ -1,0 +1,137 @@
+[gd_scene load_steps=15 format=3 uid="uid://dc35xcpxkw6mh"]
+
+[ext_resource type="Script" path="res://assets/scenes/prefabs/objects/wall.gd" id="1_7880t"]
+[ext_resource type="PackedScene" uid="uid://cjc8cy2sfh8df" path="res://assets/scenes/prefabs/objects/wall.tscn" id="1_j82ws"]
+[ext_resource type="Script" path="res://assets/scenes/levels/level.gd" id="1_pug6c"]
+[ext_resource type="Texture2D" uid="uid://dm7habcloifx8" path="res://assets/graphics/images/level2/lvl2 room1.png" id="2_2xels"]
+[ext_resource type="PackedScene" uid="uid://cbat5l3u4tssm" path="res://assets/scenes/prefabs/player/player.tscn" id="3_kjhu2"]
+[ext_resource type="PackedScene" uid="uid://3ccqj8anx7ib" path="res://assets/scenes/prefabs/move_through_door/move_through_door.tscn" id="4_kml43"]
+[ext_resource type="Texture2D" uid="uid://oppxmp1d84xc" path="res://assets/graphics/images/level2/jakinia 1 front.png" id="7_2slnw"]
+[ext_resource type="Texture2D" uid="uid://ccrcuvarpajci" path="res://assets/graphics/sprites/chars/gornik.png" id="8_bx3wa"]
+[ext_resource type="Script" path="res://assets/scenes/levels/gornik.gd" id="9_tnpwk"]
+[ext_resource type="PackedScene" uid="uid://dlodba0505j1p" path="res://assets/scenes/prefabs/cutscene/cutscene_start.tscn" id="10_a3r0v"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qxt2x"]
+size = Vector2(56, 56)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_8g0gt"]
+polygon = PackedVector2Array(-15, 41, -18, 50, -33, 55, -96, 62, -97, 72, 29, 73, 31, 35)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_2a6ys"]
+polygon = PackedVector2Array(-28, -28, 28, -28, 28, 28, -28, 28)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vmwtc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_bx3wa")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Level2a" type="Node2D"]
+script = ExtResource("1_pug6c")
+rotation_dampener = 70.0
+
+[node name="Wall4" type="StaticBody2D" parent="."]
+z_index = -3575
+position = Vector2(-849, 280)
+scale = Vector2(22.0793, 9.09016)
+script = ExtResource("1_7880t")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall4"]
+position = Vector2(0, -17.7115)
+shape = SubResource("RectangleShape2D_qxt2x")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Wall4"]
+position = Vector2(38.4523, -30.8025)
+scale = Vector2(0.0452913, 0.110009)
+occluder = SubResource("OccluderPolygon2D_8g0gt")
+
+[node name="Wall5" parent="." instance=ExtResource("1_j82ws")]
+z_index = -3575
+position = Vector2(855, 10)
+scale = Vector2(22.0793, 9.09016)
+
+[node name="Wall6" type="StaticBody2D" parent="."]
+z_index = -3575
+position = Vector2(-269, -148)
+scale = Vector2(-0.745204, 0.0751514)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall6"]
+shape = SubResource("RectangleShape2D_qxt2x")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Wall6"]
+occluder = SubResource("OccluderPolygon2D_2a6ys")
+
+[node name="Wall7" type="StaticBody2D" parent="."]
+z_index = -3575
+position = Vector2(24, -153)
+scale = Vector2(7.5348, 0.0751514)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall7"]
+shape = SubResource("RectangleShape2D_qxt2x")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Wall7"]
+occluder = SubResource("OccluderPolygon2D_2a6ys")
+
+[node name="Lvl1Room1" type="Sprite2D" parent="."]
+texture_filter = 3
+position = Vector2(3, -43)
+scale = Vector2(2, 2)
+texture = ExtResource("2_2xels")
+
+[node name="Gornik" type="AnimatedSprite2D" parent="."]
+texture_filter = 3
+position = Vector2(-122, -9)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_vmwtc")
+script = ExtResource("9_tnpwk")
+
+[node name="Player" parent="." instance=ExtResource("3_kjhu2")]
+position = Vector2(0, 4)
+init_x = -200.0
+
+[node name="MoveThroughDoor" parent="." instance=ExtResource("4_kml43")]
+position = Vector2(245, -7)
+move_to = "res://assets/scenes/levels/level_2b.tscn"
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
+position = Vector2(-101, -200)
+rotation = -0.891411
+energy = 0.3
+shadow_enabled = true
+shadow_color = Color(0, 0, 0, 1)
+shadow_filter = 1
+shadow_filter_smooth = 21.8
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.6, 0.6, 0.6, 1)
+texture_filter = 3
+position = Vector2(3, 44)
+scale = Vector2(2, 2)
+texture = ExtResource("7_2slnw")
+region_rect = Rect2(14.5546, 24.1327, 54.7471, 16.9639)
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = 237.0
+offset_top = 4.0
+offset_right = 277.0
+offset_bottom = 109.0
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect" type="ColorRect" parent="ColorRect"]
+layout_mode = 0
+offset_left = 34.0
+offset_top = 57.0
+offset_right = 105.0
+offset_bottom = 573.0
+rotation = 1.5708
+color = Color(0, 0, 0, 1)
+
+[node name="Cutscenka" parent="." groups=["AutoInteract"] instance=ExtResource("10_a3r0v")]
+position = Vector2(-178, -4)
+scale = Vector2(0.386084, 0.393157)
+chosen_cutscene = 3

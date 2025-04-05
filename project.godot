@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="UKENjam2025"
-run/main_scene="res://assets/scenes/levels/level_test.tscn"
+run/main_scene="res://assets/scenes/levels/level_0_tutorial.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 config/icon="res://icon.svg"
 
@@ -20,6 +20,26 @@ config/icon="res://icon.svg"
 Persistent="*res://assets/global/persistent.gd"
 SignalBus="*res://assets/global/signalbus.gd"
 Util="*res://assets/global/util.gd"
+Audio="*res://assets/global/audio.gd"
+
+[display]
+
+window/size/mode=2
+window/size/initial_position_type=2
+window/stretch/mode="canvas_items"
+
+[global_group]
+
+Door=""
+Interactable=""
+NPC=""
+BlocksBullets=""
+ReceivesDamage=""
+Cutscene=""
+AutoInteract=""
+SideDoor=""
+BreakBarricade=""
+NeedsCrowbar=""
 
 [input]
 

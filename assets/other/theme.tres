@@ -1,0 +1,9 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://y2k1ulo02lh"]
+
+[ext_resource type="FontFile" uid="uid://bb57bhgde0r6l" path="res://assets/other/SpecialElite-Regular.ttf" id="1_mtnkn"]
+
+[resource]
+default_font = ExtResource("1_mtnkn")
+Label/colors/font_color = Color(1, 1, 0.827451, 1)
+Label/font_sizes/font_size = 40
+Label/styles/normal = null

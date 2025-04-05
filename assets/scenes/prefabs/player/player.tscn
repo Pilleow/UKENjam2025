@@ -1,42 +1,418 @@
-[gd_scene load_steps=4 format=3 uid="uid://cbat5l3u4tssm"]
+[gd_scene load_steps=40 format=3 uid="uid://cbat5l3u4tssm"]
 
-[ext_resource type="Script" path="res://assets/scenes/prefabs/player/player.gd" id="1_uagjw"]
+[ext_resource type="Script" path="res://assets/scenes/prefabs/player/player_master.gd" id="1_k58qf"]
+[ext_resource type="Script" path="res://assets/scenes/prefabs/player/player_down.gd" id="1_uagjw"]
+[ext_resource type="Script" path="res://assets/scenes/prefabs/player/hud.gd" id="2_28i0e"]
+[ext_resource type="Script" path="res://assets/scenes/prefabs/player/player_undertale.gd" id="2_g5gmb"]
+[ext_resource type="Texture2D" uid="uid://dfx4q6drfsyeu" path="res://assets/graphics/sprites/undertale/swieczka.png" id="4_0ydkb"]
+[ext_resource type="Texture2D" uid="uid://bdtc1tfh8mpi3" path="res://assets/graphics/sprites/keyhole.png" id="4_604fh"]
+[ext_resource type="Theme" uid="uid://y2k1ulo02lh" path="res://assets/other/theme.tres" id="4_c53l4"]
+[ext_resource type="Shader" path="res://assets/other/key_shader.gdshader" id="5_1bm7a"]
+[ext_resource type="Texture2D" uid="uid://b0pnphkg770vn" path="res://assets/graphics/sprites/keyhole_top.png" id="5_3bon4"]
+[ext_resource type="Texture2D" uid="uid://u8bj55ib1qro" path="res://assets/graphics/sprites/undertale/walkatlo.png" id="5_ksqxo"]
+[ext_resource type="Texture2D" uid="uid://8v8u12hoxo52" path="res://assets/graphics/sprites/key.png" id="5_yfucg"]
+[ext_resource type="Texture2D" uid="uid://cac73k1pddrvc" path="res://assets/graphics/sprites/duch/duchogien1.png" id="6_34dql"]
+[ext_resource type="Texture2D" uid="uid://cvdtkv73jqet2" path="res://assets/graphics/sprites/duch/duchmrug1.png" id="6_dlmxr"]
+[ext_resource type="Texture2D" uid="uid://c8omo72jk2io8" path="res://assets/graphics/sprites/duch/duchogien2.png" id="7_nh5w1"]
+[ext_resource type="Texture2D" uid="uid://cve245c584bq3" path="res://assets/graphics/sprites/duch/duchmrug2.png" id="7_xbadg"]
+[ext_resource type="Texture2D" uid="uid://cyrgcdaw7uas6" path="res://assets/graphics/sprites/duch/duchogien3.png" id="8_ge0s2"]
+[ext_resource type="Texture2D" uid="uid://bagu05wjfwxah" path="res://assets/graphics/sprites/duch/duchmrug3.png" id="8_mpgs2"]
+[ext_resource type="Texture2D" uid="uid://cy83xc64fwsv5" path="res://assets/graphics/sprites/duch/duchogien4.png" id="9_eox6c"]
+[ext_resource type="Texture2D" uid="uid://bgupaus5xwvgv" path="res://assets/graphics/sprites/duch/duchmrug4.png" id="9_slm4v"]
+[ext_resource type="Texture2D" uid="uid://jywq287q1lgk" path="res://assets/graphics/sprites/light.png" id="10_418j1"]
+[ext_resource type="Texture2D" uid="uid://bwt77wuxwlwbt" path="res://assets/graphics/sprites/duch/duchmrug5.png" id="10_jskks"]
+[ext_resource type="Texture2D" uid="uid://dsv2ffx6j3bid" path="res://assets/graphics/sprites/duch/duchogien5.png" id="10_nwot2"]
+[ext_resource type="Texture2D" uid="uid://dw6ep04fmqr2" path="res://assets/graphics/sprites/duch/duchmrug6.png" id="11_bg5wk"]
+[ext_resource type="Texture2D" uid="uid://clqxdcq3dab2u" path="res://assets/graphics/sprites/duch/duchogien6.png" id="11_k03vh"]
+[ext_resource type="Texture2D" uid="uid://c2x0vtsp8okcu" path="res://assets/graphics/sprites/player/player_idle1.png" id="11_sgsk4"]
+[ext_resource type="Texture2D" uid="uid://cn3m1kwwyar5f" path="res://assets/graphics/sprites/player/player_idle2.png" id="12_woxfm"]
+[ext_resource type="Texture2D" uid="uid://wge1ba1441sp" path="res://assets/graphics/sprites/player/player_walk1.png" id="13_hlljy"]
+[ext_resource type="Texture2D" uid="uid://cqfi2y644iiyr" path="res://assets/graphics/sprites/player/player_walk2.png" id="14_v8bku"]
+[ext_resource type="Texture2D" uid="uid://ciuaj4qenpl67" path="res://assets/graphics/sprites/player/player_walk3.png" id="15_5lil7"]
+[ext_resource type="Texture2D" uid="uid://bropd0ey2pcax" path="res://assets/graphics/sprites/player/player_walk4.png" id="16_sh3nx"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sll31"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_dlmxr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_xbadg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_mpgs2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_slm4v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_jskks")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_bg5wk")
+}],
+"loop": false,
+"name": &"dead",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_34dql")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_nh5w1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_ge0s2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_eox6c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_nwot2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_k03vh")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 4.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_e5qll"]
+radius = 12.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ggur1"]
+size = Vector2(68, 364)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kqffk"]
+size = Vector2(546.25, 63)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2ni1l"]
+shader = ExtResource("5_1bm7a")
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_43523"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_yfucg")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_clgww"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_sgsk4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_woxfm")
+}],
+"loop": true,
+"name": &"standing",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("13_hlljy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_v8bku")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_5lil7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_sh3nx")
+}],
+"loop": true,
+"name": &"walking",
+"speed": 3.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6a38v"]
-size = Vector2(64, 64)
+size = Vector2(30, 63)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8ba0a"]
-size = Vector2(114, 76)
+size = Vector2(26, 76)
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="Node2D"]
+script = ExtResource("1_k58qf")
+
+[node name="HUD" type="CanvasLayer" parent="."]
+visible = false
+script = ExtResource("2_28i0e")
+
+[node name="Fade" type="ColorRect" parent="HUD"]
+visible = false
+z_index = 730
+offset_left = -53.0
+offset_top = -435.0
+offset_right = 1283.0
+offset_bottom = 1363.0
+color = Color(0, 0, 0, 1)
+
+[node name="Border" type="ColorRect" parent="HUD"]
+offset_left = -83.0
+offset_top = 361.0
+offset_right = 1291.0
+offset_bottom = 711.0
+scale = Vector2(0.911841, 3.98262)
+pivot_offset = Vector2(677, 186)
+color = Color(0, 0, 0, 0.780392)
+
+[node name="UndertaleWrapper" type="Node2D" parent="HUD"]
+visible = false
+
+[node name="Eyes" type="AnimatedSprite2D" parent="HUD/UndertaleWrapper"]
+position = Vector2(576, 42)
+sprite_frames = SubResource("SpriteFrames_sll31")
+animation = &"dead"
+autoplay = "idle"
+offset = Vector2(0, -200)
+
+[node name="Sprite2D" type="Sprite2D" parent="HUD/UndertaleWrapper"]
+texture_filter = 3
+position = Vector2(576, 327)
+scale = Vector2(1.735, 1.735)
+texture = ExtResource("5_ksqxo")
+
+[node name="UndertaleArea" type="ColorRect" parent="HUD/UndertaleWrapper"]
+offset_left = 364.0
+offset_top = 202.0
+offset_right = 788.0
+offset_bottom = 454.0
+color = Color(0.7, 0.7, 0.7, 0)
+
+[node name="UndertalePlayer" type="CharacterBody2D" parent="HUD/UndertaleWrapper" groups=["BlocksBullets", "ReceivesDamage"]]
+position = Vector2(576, 325)
+collision_layer = 2
+collision_mask = 2
+motion_mode = 1
+script = ExtResource("2_g5gmb")
+
+[node name="Sprite2D" type="Sprite2D" parent="HUD/UndertaleWrapper/UndertalePlayer"]
+texture_filter = 3
+position = Vector2(-1, 1)
+scale = Vector2(1.75, 1.75)
+texture = ExtResource("4_0ydkb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HUD/UndertaleWrapper/UndertalePlayer"]
+shape = SubResource("CircleShape2D_e5qll")
+
+[node name="BorderCollider1" type="StaticBody2D" parent="HUD/UndertaleWrapper"]
+position = Vector2(352, 288)
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HUD/UndertaleWrapper/BorderCollider1"]
+position = Vector2(-21.25, 45)
+shape = SubResource("RectangleShape2D_ggur1")
+
+[node name="BorderCollider2" type="StaticBody2D" parent="HUD/UndertaleWrapper"]
+position = Vector2(448, 212)
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HUD/UndertaleWrapper/BorderCollider2"]
+position = Vector2(105, -41.75)
+shape = SubResource("RectangleShape2D_kqffk")
+
+[node name="BorderCollider3" type="StaticBody2D" parent="HUD/UndertaleWrapper"]
+position = Vector2(466, 527)
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HUD/UndertaleWrapper/BorderCollider3"]
+position = Vector2(105, -41.5)
+shape = SubResource("RectangleShape2D_kqffk")
+
+[node name="BorderCollider4" type="StaticBody2D" parent="HUD/UndertaleWrapper"]
+position = Vector2(844, 288)
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HUD/UndertaleWrapper/BorderCollider4"]
+position = Vector2(-21, 45)
+shape = SubResource("RectangleShape2D_ggur1")
+
+[node name="HintsRight" type="Label" parent="HUD/UndertaleWrapper"]
+visible = false
+modulate = Color(1, 1, 1, 0.713726)
+offset_left = 87.0
+offset_top = 319.0
+offset_right = 297.0
+offset_bottom = 404.0
+rotation = -0.219634
+theme = ExtResource("4_c53l4")
+text = "Ruszaj się
+na WASD"
+vertical_alignment = 1
+
+[node name="HintsRight2" type="Label" parent="HUD/UndertaleWrapper"]
+visible = false
+modulate = Color(1, 1, 1, 0.713726)
+offset_left = 836.0
+offset_top = 278.0
+offset_right = 1046.0
+offset_bottom = 363.0
+rotation = 0.322722
+theme = ExtResource("4_c53l4")
+text = "Twój cel
+PRZEŻYJ"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="DoorOpenWrapper" type="Node2D" parent="HUD"]
+visible = false
+
+[node name="HoleBackSprite" type="Sprite2D" parent="HUD/DoorOpenWrapper"]
+texture_filter = 3
+position = Vector2(668, 214)
+scale = Vector2(4, 4)
+texture = ExtResource("4_604fh")
+
+[node name="KeySprite" type="AnimatedSprite2D" parent="HUD/DoorOpenWrapper"]
+texture_filter = 3
+material = SubResource("ShaderMaterial_2ni1l")
+position = Vector2(432, 171)
+scale = Vector2(8, 8)
+sprite_frames = SubResource("SpriteFrames_43523")
+offset = Vector2(0, 5.5)
+
+[node name="HoleFrontSprite" type="Sprite2D" parent="HUD/DoorOpenWrapper"]
+texture_filter = 3
+position = Vector2(668, 214)
+scale = Vector2(4, 4)
+texture = ExtResource("5_3bon4")
+
+[node name="Label" type="Label" parent="HUD/DoorOpenWrapper"]
+modulate = Color(0.32549, 0.32549, 0.32549, 1)
+offset_left = 327.0
+offset_top = 341.0
+offset_right = 568.0
+offset_bottom = 426.0
+theme = ExtResource("4_c53l4")
+text = "[D] Włóż
+[S] Przekręć"
+
+[node name="DeadWrapper" type="Node2D" parent="HUD"]
+visible = false
+
+[node name="BG" type="ColorRect" parent="HUD/DeadWrapper"]
+offset_left = -10.0
+offset_top = -8.0
+offset_right = 1174.0
+offset_bottom = 673.0
+color = Color(0.117647, 0, 0, 1)
+
+[node name="Label" type="Label" parent="HUD/DeadWrapper"]
+offset_top = 279.0
+offset_right = 1152.0
+offset_bottom = 350.0
+pivot_offset = Vector2(579, 40)
+theme = ExtResource("4_c53l4")
+theme_override_colors/font_color = Color(0.83, 0, 0, 1)
+theme_override_font_sizes/font_size = 70
+text = "ZAWIODŁEŚ SWYCH BRACI"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="HUD/DeadWrapper"]
+offset_top = 351.0
+offset_right = 1152.0
+offset_bottom = 422.0
+pivot_offset = Vector2(578, 35)
+theme = ExtResource("4_c53l4")
+theme_override_colors/font_color = Color(0.546489, 1.79287e-06, 3.36915e-07, 1)
+theme_override_font_sizes/font_size = 38
+text = "NIE OSIĄGNĄŁEŚ PEŁNI SWOJEGO POTENCJAŁU"
+horizontal_alignment = 1
+
+[node name="Overlay" type="ColorRect" parent="HUD/DeadWrapper"]
+offset_left = -10.0
+offset_top = -9.0
+offset_right = 1162.0
+offset_bottom = 662.0
+color = Color(0.45, 0, 0, 1)
+
+[node name="BreakBarricadeWrapper" type="Node2D" parent="HUD"]
+visible = false
+
+[node name="TakeOutLetterWrapper" type="Node2D" parent="HUD"]
+visible = false
+
+[node name="Szuflada" type="Sprite2D" parent="HUD/TakeOutLetterWrapper"]
+
+[node name="SzufladaInner" type="Sprite2D" parent="HUD/TakeOutLetterWrapper"]
+
+[node name="DownPlayer" type="CharacterBody2D" parent="."]
 script = ExtResource("1_uagjw")
 
+[node name="PointLight2D" type="PointLight2D" parent="DownPlayer"]
+position = Vector2(0, -22)
+energy = 0.6
+shadow_enabled = true
+texture = ExtResource("10_418j1")
+
+[node name="PointLight2D2" type="PointLight2D" parent="DownPlayer"]
+position = Vector2(0, -22)
+rotation = 2.73493
+energy = 0.5
+shadow_enabled = true
+texture = ExtResource("10_418j1")
+texture_scale = 2.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="DownPlayer"]
+texture_filter = 3
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_clgww")
+animation = &"standing"
+autoplay = "standing"
+frame_progress = 0.216956
+
+[node name="Collider" type="CollisionShape2D" parent="DownPlayer"]
+visible = false
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_6a38v")
+
+[node name="InteractArea" type="Area2D" parent="DownPlayer"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DownPlayer/InteractArea"]
+position = Vector2(0, -6)
+shape = SubResource("RectangleShape2D_8ba0a")
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0, 0, 0, 1)
+
 [node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(0, -13)
+ignore_rotation = false
+zoom = Vector2(3, 3)
 position_smoothing_enabled = true
 position_smoothing_speed = 7.0
 
-[node name="PlayerSprite" type="ColorRect" parent="."]
-offset_left = -32.0
-offset_top = -32.0
-offset_right = 32.0
-offset_bottom = 32.0
-color = Color(0.117647, 0.603922, 0.796078, 1)
-
-[node name="HUD" type="CanvasLayer" parent="."]
-
-[node name="GlobalBackground" type="ColorRect" parent="."]
+[node name="GlobalBackground" type="ColorRect" parent="Camera2D"]
 z_index = -4096
-offset_left = -1155.0
-offset_top = -746.0
-offset_right = 1155.0
-offset_bottom = 746.0
-color = Color(0, 0, 0.0509804, 1)
+offset_left = -1157.0
+offset_top = -744.0
+offset_right = 1153.0
+offset_bottom = 748.0
+color = Color(0, 0, 0, 1)
 
-[node name="Collider" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_6a38v")
+[node name="InteractLabelWrapper" type="CanvasLayer" parent="."]
+visible = false
 
-[node name="InteractArea" type="Area2D" parent="."]
+[node name="InteractLabel" type="Label" parent="InteractLabelWrapper"]
+offset_top = -41.0
+offset_right = 1152.0
+theme = ExtResource("4_c53l4")
+text = "[E] Przeczytaj list"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractArea"]
-position = Vector2(0, -6)
-shape = SubResource("RectangleShape2D_8ba0a")
+[connection signal="area_entered" from="DownPlayer/InteractArea" to="." method="_on_interact_area_area_entered"]
+[connection signal="area_exited" from="DownPlayer/InteractArea" to="." method="_on_interact_area_area_exited"]
