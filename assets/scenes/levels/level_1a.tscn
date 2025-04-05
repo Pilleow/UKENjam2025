@@ -50,5 +50,3 @@ move_to = "res://assets/scenes/levels/level_1b.tscn"
 position = Vector2(-108, -4)
 scale = Vector2(0.386084, 0.393157)
 chosen_cutscene = 2
-interact_cue = ""
-item = ""

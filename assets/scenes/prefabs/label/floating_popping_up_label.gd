@@ -11,6 +11,7 @@ var init_y_label = 0.0
 var next_label_in:float = randf_range(1, timer_seconds)
 
 func _ready():
+	hide()
 	init_y_label = label.position.y
 
 func _physics_process(delta: float) -> void:
@@ -23,6 +24,7 @@ func _physics_process(delta: float) -> void:
 			rotate(0.0001)
 	label.modulate.a = max(0, next_label_in - timer_seconds + 2)
 	if next_label_in < 0:
+		show()
 		label.position.y = init_y_label
 		label.rotation = randf_range(-PI/16, PI/16)
 		next_label_in = timer_seconds
