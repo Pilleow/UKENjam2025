@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://cahvwaf1x143d" path="res://assets/scenes/prefabs/label/floating_popping_up_label.tscn" id="8_x8381"]
 [ext_resource type="PackedScene" uid="uid://dlodba0505j1p" path="res://assets/scenes/prefabs/cutscene/cutscene_start.tscn" id="9_dr8cg"]
 
-[node name="Level1a" type="Node2D"]
+[node name="Level3" type="Node2D"]
 script = ExtResource("1_k4chi")
 rotation_dampener = 40.0
 
@@ -51,8 +51,8 @@ position = Vector2(243, -49.5)
 scale = Vector2(0.551139, 0.522821)
 bullet_delay = 0.25
 bullet_group_delay = 0.4
-bullet_speed = 4.0
-bullet_groups_to_send = 15
+bullet_speed = 4.2
+bullet_groups_to_send = 25
 move_to_scene = "res://assets/scenes/levels/level_4_end.tscn"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -63,8 +63,10 @@ texture = ExtResource("6_es8tn")
 
 [node name="Player" parent="." instance=ExtResource("3_sa4ek")]
 position = Vector2(0, -10)
+init_bgm = "res://assets/sounds/bgm/bgm_1.wav"
 disable_lights = true
 anchor_camera = false
+init_x_on_replay = 520.0
 
 [node name="Lvl1Room2" type="Sprite2D" parent="."]
 texture_filter = 3
@@ -82,6 +84,6 @@ position = Vector2(683, -83)
 texts = Array[String](["“Gdybym tylko dosięgnął” ", "“Gdybym go złapał”"])
 
 [node name="Cutscenka" parent="." groups=["AutoInteract"] instance=ExtResource("9_dr8cg")]
-position = Vector2(6.99999, -4)
+position = Vector2(6.99999, -16)
 scale = Vector2(0.386084, 0.393157)
 chosen_cutscene = 4

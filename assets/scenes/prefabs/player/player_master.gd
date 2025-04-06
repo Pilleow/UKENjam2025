@@ -8,22 +8,48 @@ var died_on = -1
 var items = [
 ]
 
+var last_anim_frame = 0
 var next_scene_path = null
 
-var rotation_dampener = 150.0
+var rotation_dampener = 100.0
 
 @export var show_battle_hints: bool = false
+@export_file("*.wav") var init_bgm: String = ""
+@export_file("*.wav") var next_bgm: String = ""
+@export_file("*.wav") var fight_bgm = "res://assets/sounds/bgm/boss_main.wav"
 
 @export var disable_lights = false
 @export var anchor_camera = true
 @export var init_x: float = 0
+@export var init_x_on_replay: float = 0
 
 @onready var player_down = $DownPlayer
 @onready var player_undertale = $HUD/UndertaleWrapper/UndertalePlayer
 @onready var hud = $HUD
 @onready var camera = $Camera2D
 
+func skip_cutscene_if_played():
+	match get_tree().current_scene.name:
+		"Level1":
+			if Persistent.level1:
+				init_x = init_x_on_replay
+			Persistent.level1 = true
+		"Level2":
+			if Persistent.level2:
+				init_x = init_x_on_replay
+			Persistent.level2 = true
+		"Level3":
+			if Persistent.level3:
+				init_x = init_x_on_replay
+			Persistent.level3 = true
+
 func _ready():
+	skip_cutscene_if_played()
+	
+	init_bgm = init_bgm.split("/")[-1]
+	next_bgm = next_bgm.split("/")[-1]
+	fight_bgm = fight_bgm.split("/")[-1]
+	
 	if show_battle_hints:
 		$HUD/UndertaleWrapper/HintsRight.show()
 		$HUD/UndertaleWrapper/HintsRight2.show()
@@ -38,10 +64,16 @@ func _ready():
 	$HUD/DeadWrapper.hide()
 	hud.show()
 	SignalBus.fade_finish.connect(_on_fade_finish)
+	SignalBus.BgmFinished.connect(_on_bgm_finish)
 	if player_state == Util.PLAYER_STATES.UNDERTALE:
 		hud.offset.y = 0
 	elif player_state == Util.PLAYER_STATES.DOWN:
 		hud.offset.y = -100
+
+func _on_bgm_finish():
+	if len(next_bgm) > 0:
+		init_bgm = next_bgm
+		next_bgm = ""
 
 func _on_fade_finish():
 	if next_scene_path:
@@ -60,6 +92,14 @@ func fade_out_and_change_scene_to(path: String):
 	hud.fade_out = true
 
 func _physics_process(delta: float) -> void:
+	Audio.ensure_bgm_playing(init_bgm)
+	Audio.ensure_ambient_playing()
+	if $DownPlayer/AnimatedSprite2D.animation == "standing":
+		last_anim_frame = -1
+	if $DownPlayer/AnimatedSprite2D.frame % 2 == 1 and $DownPlayer/AnimatedSprite2D.animation == 'walking' and last_anim_frame != $DownPlayer/AnimatedSprite2D.frame:
+		last_anim_frame = $DownPlayer/AnimatedSprite2D.frame
+		Audio.play_step_sound()
+	
 	if len(interactable_entities) == 0 or player_state != Util.PLAYER_STATES.DOWN:
 		$InteractLabelWrapper/InteractLabel.global_position.y = move_toward(
 			$InteractLabelWrapper/InteractLabel.global_position.y, -45, 
@@ -90,6 +130,8 @@ func _physics_process(delta: float) -> void:
 	
 	if player_undertale.hp <= 0:
 		if died_on == -1:
+			init_bgm = ""
+			next_bgm = ""
 			$HUD/DeadWrapper.show()
 			died_on = Time.get_ticks_msec()
 			hud.offset.y = 0
@@ -134,6 +176,9 @@ func set_state(en: Util.PLAYER_STATES):
 func _on_interact_area_area_entered(area: Area2D) -> void:
 	var body = area.get_parent()
 	if body and body.is_in_group("Interactable"):
+		if body.is_in_group("FightArea"):
+			init_bgm = "boss_intro.wav"
+			next_bgm = fight_bgm
 		if body.is_in_group("AutoInteract"):
 			body.interact()
 			hud.set_interacting_body(body)

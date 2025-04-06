@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://dlodba0505j1p"]
 
 [ext_resource type="Script" path="res://assets/scenes/prefabs/cutscene/cutscene_start.gd" id="1_fcfjw"]
-[ext_resource type="Texture2D" uid="uid://bvhf78nym54de" path="res://assets/graphics/cutscenes/level1/gosciu_1.png" id="2_1ye3u"]
+[ext_resource type="Texture2D" uid="uid://kwy25urqkrhq" path="res://assets/graphics/cutscenes/img/cutscene1.png" id="2_jgm01"]
 [ext_resource type="Theme" uid="uid://y2k1ulo02lh" path="res://assets/other/theme.tres" id="4_bp6ls"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tqov5"]
@@ -20,13 +20,21 @@ visible = false
 
 [node name="Wrapper" type="Node2D" parent="CanvasLayer"]
 
+[node name="Bg" type="ColorRect" parent="CanvasLayer/Wrapper"]
+offset_left = -43.0
+offset_top = -27.0
+offset_right = 1207.0
+offset_bottom = 688.0
+color = Color(0.0627451, 0.0784314, 0.0980392, 1)
+
 [node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/Wrapper"]
 texture_filter = 3
 position = Vector2(576, 324)
-scale = Vector2(2, 2)
-texture = ExtResource("2_1ye3u")
+scale = Vector2(0.43, 0.43)
+texture = ExtResource("2_jgm01")
 
 [node name="FgFade" type="ColorRect" parent="CanvasLayer/Wrapper"]
+visible = false
 offset_left = -43.0
 offset_top = -27.0
 offset_right = 1207.0
@@ -34,6 +42,7 @@ offset_bottom = 688.0
 color = Color(0, 0, 0, 1)
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer/Wrapper"]
+visible = false
 offset_left = -14.0
 offset_top = 504.0
 offset_right = 1242.0

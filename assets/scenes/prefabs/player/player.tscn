@@ -31,6 +31,15 @@
 [ext_resource type="Texture2D" uid="uid://ciuaj4qenpl67" path="res://assets/graphics/sprites/player/player_walk3.png" id="15_5lil7"]
 [ext_resource type="Texture2D" uid="uid://bropd0ey2pcax" path="res://assets/graphics/sprites/player/player_walk4.png" id="16_sh3nx"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_e5qll"]
+radius = 12.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ggur1"]
+size = Vector2(68, 364)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kqffk"]
+size = Vector2(546.25, 63)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_sll31"]
 animations = [{
 "frames": [{
@@ -80,15 +89,6 @@ animations = [{
 "speed": 4.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_e5qll"]
-radius = 12.0
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ggur1"]
-size = Vector2(68, 364)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_kqffk"]
-size = Vector2(546.25, 63)
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2ni1l"]
 shader = ExtResource("5_1bm7a")
 
@@ -118,16 +118,16 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("13_hlljy")
-}, {
-"duration": 1.0,
 "texture": ExtResource("14_v8bku")
 }, {
 "duration": 1.0,
-"texture": ExtResource("15_5lil7")
+"texture": ExtResource("13_hlljy")
 }, {
 "duration": 1.0,
 "texture": ExtResource("16_sh3nx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_5lil7")
 }],
 "loop": true,
 "name": &"walking",
@@ -167,13 +167,6 @@ color = Color(0, 0, 0, 0.780392)
 
 [node name="UndertaleWrapper" type="Node2D" parent="HUD"]
 visible = false
-
-[node name="Eyes" type="AnimatedSprite2D" parent="HUD/UndertaleWrapper"]
-position = Vector2(576, 42)
-sprite_frames = SubResource("SpriteFrames_sll31")
-animation = &"dead"
-autoplay = "idle"
-offset = Vector2(0, -200)
 
 [node name="Sprite2D" type="Sprite2D" parent="HUD/UndertaleWrapper"]
 texture_filter = 3
@@ -266,6 +259,13 @@ text = "Twój cel
 PRZEŻYJ"
 horizontal_alignment = 2
 vertical_alignment = 1
+
+[node name="Eyes" type="AnimatedSprite2D" parent="HUD/UndertaleWrapper"]
+position = Vector2(576, 42)
+sprite_frames = SubResource("SpriteFrames_sll31")
+animation = &"dead"
+autoplay = "idle"
+offset = Vector2(0, -200)
 
 [node name="DoorOpenWrapper" type="Node2D" parent="HUD"]
 visible = false
@@ -370,9 +370,8 @@ texture_scale = 2.0
 texture_filter = 3
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_clgww")
-animation = &"standing"
+animation = &"walking"
 autoplay = "standing"
-frame_progress = 0.216956
 
 [node name="Collider" type="CollisionShape2D" parent="DownPlayer"]
 visible = false

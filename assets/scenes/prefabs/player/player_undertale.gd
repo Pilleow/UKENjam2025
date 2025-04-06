@@ -9,8 +9,11 @@ var notified = false
 var max_hp = 3
 var hp = max_hp
 
+var init_position = null
+
 var locked_movement = false
 
+@onready var wrapper = get_parent()
 @onready var player_master = get_tree().current_scene.find_child("Player")
 
 func lock_movement():
@@ -20,6 +23,7 @@ func unlock_movement():
 	locked_movement = false
 
 func _ready():
+	init_position = position
 	SignalBus.player_lock_input.connect(lock_movement)
 	SignalBus.player_unlock_input.connect(unlock_movement)
 
@@ -59,5 +63,12 @@ func _physics_process(delta: float) -> void:
 		time_since_player_moved = 0
 	else:
 		velocity.y = move_toward(velocity.y, 0, SPEED)
+	
+	var dx = init_position.x - position.x
+	wrapper.rotation = -dx / 10000.0
+	wrapper.position = Vector2(
+		init_position.x - position.x,
+		init_position.y - position.y - 100
+	) / 5.0
 	
 	move_and_slide()

@@ -3,7 +3,8 @@ extends Node
 # tu wszystkie enumy, stałe (ale nie ZMIENNE) które powinny być globalnie dostępne
 
 enum RANDOM_AUDIO_STREAMS {
-	SPEAK_BEAT
+	SPEAK_BEAT,
+	STEP
 }
 
 enum PLAYER_STATES {

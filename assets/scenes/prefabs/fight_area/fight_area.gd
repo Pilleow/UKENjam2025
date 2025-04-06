@@ -3,7 +3,7 @@ extends Node2D
 @export_range(0.1, 0.5) var bullet_delay: float = 0.2
 @export_range(0.1, 1.5) var bullet_group_delay: float = 0.7
 @export_range(1.0, 7.0) var bullet_speed: float = 3.5
-@export_range(3, 20) var bullet_groups_to_send = 10
+@export_range(3, 30) var bullet_groups_to_send = 10
 @export_file("*.tscn") var move_to_scene = ""
 
 @export var interact_cue = "Rozpocznij rytuał"
@@ -65,6 +65,7 @@ func interact():
 		var b = bgroup.pick_random()
 		bgroup.erase(b)
 		bullet_groups_sent += 1
+		player._on_bgm_finish()
 		await launch_bullet_group(b, randf() > 0.5, randf() > 0.5)
 		await get_tree().create_timer(bullet_group_delay).timeout  # tu zmieniać difficulty
 		if len(bgroup) == 0:

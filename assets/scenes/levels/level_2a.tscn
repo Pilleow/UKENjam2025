@@ -31,7 +31,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Level2a" type="Node2D"]
+[node name="Level2" type="Node2D"]
 script = ExtResource("1_pug6c")
 rotation_dampener = 70.0
 

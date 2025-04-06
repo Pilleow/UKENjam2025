@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://3ccqj8anx7ib" path="res://assets/scenes/prefabs/move_through_door/move_through_door.tscn" id="4_ntw7u"]
 [ext_resource type="PackedScene" uid="uid://ba7h224kcugro" path="res://assets/scenes/prefabs/take_out_letter/take_out_letter.tscn" id="5_engag"]
 
-[node name="Level1a" type="Node2D"]
+[node name="Level1" type="Node2D"]
 
 [node name="Wall" parent="." instance=ExtResource("1_byusm")]
 z_index = -3575
@@ -36,6 +36,7 @@ texture = ExtResource("2_m6j3g")
 
 [node name="Player" parent="." instance=ExtResource("3_glmss")]
 position = Vector2(0, -3)
+init_bgm = "res://assets/sounds/bgm/ambient_beat_main.wav"
 init_x = -123.0
 
 [node name="MoveThroughDoor" parent="." instance=ExtResource("4_ntw7u")]

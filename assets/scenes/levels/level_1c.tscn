@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cv5wevah2b43v" path="res://assets/scenes/prefabs/fight_area/fight_area.tscn" id="4_2bdyr"]
 [ext_resource type="PackedScene" uid="uid://ba7h224kcugro" path="res://assets/scenes/prefabs/take_out_letter/take_out_letter.tscn" id="5_kuboj"]
 
-[node name="Level1a" type="Node2D"]
+[node name="Level1" type="Node2D"]
 
 [node name="Wall" parent="." instance=ExtResource("1_nw0vu")]
 z_index = -3575
@@ -36,6 +36,7 @@ texture = ExtResource("2_7oj3r")
 
 [node name="Player" parent="." instance=ExtResource("3_posyn")]
 position = Vector2(0, -3)
+init_bgm = "res://assets/sounds/bgm/ambient_beat_main.wav"
 init_x = -123.0
 
 [node name="TakeOutLetter" parent="." instance=ExtResource("5_kuboj")]
@@ -46,4 +47,6 @@ interact_cue = "Zniszcz barykadę"
 [node name="FightArea" parent="." instance=ExtResource("4_2bdyr")]
 position = Vector2(126, -18)
 scale = Vector2(0.551139, 0.522821)
+bullet_group_delay = 0.5
+bullet_groups_to_send = 15
 move_to_scene = "res://assets/scenes/levels/level_2a.tscn"

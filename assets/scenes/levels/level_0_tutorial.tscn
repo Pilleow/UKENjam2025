@@ -23,7 +23,7 @@ animations = [{
 "speed": 2.0
 }]
 
-[node name="Level0Tutorial" type="Node2D"]
+[node name="Level0" type="Node2D"]
 script = ExtResource("1_kj1n2")
 
 [node name="Wall" parent="." instance=ExtResource("3_5ale1")]
@@ -56,7 +56,7 @@ texture = ExtResource("9_idhnw")
 
 [node name="NPC" type="AnimatedSprite2D" parent="."]
 texture_filter = 3
-position = Vector2(17, -1)
+position = Vector2(-48, -1)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_d3b4l")
 autoplay = "default"
@@ -65,7 +65,7 @@ script = ExtResource("6_yhdxe")
 [node name="Player" parent="." instance=ExtResource("2_1ce48")]
 position = Vector2(62, 4)
 show_battle_hints = true
-init_x = -60.0
+init_bgm = "res://assets/sounds/bgm/bgm_1.wav"
 
 [node name="Door" parent="." instance=ExtResource("4_pswx8")]
 position = Vector2(62, -3)
@@ -73,11 +73,10 @@ position = Vector2(62, -3)
 [node name="FightArea" parent="." instance=ExtResource("5_gcl8p")]
 position = Vector2(143, -13)
 scale = Vector2(0.551139, 0.522821)
-bullet_groups_to_send = 15
 move_to_scene = "res://assets/scenes/levels/level_1a.tscn"
 
 [node name="Cutscenka" parent="." groups=["AutoInteract"] instance=ExtResource("6_7412n")]
-position = Vector2(36, -4)
+position = Vector2(-65, -4)
 scale = Vector2(0.386084, 0.393157)
 chosen_cutscene = 1
 item = "KEY"

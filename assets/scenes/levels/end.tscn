@@ -1,0 +1,145 @@
+[gd_scene load_steps=10 format=3 uid="uid://c1dmtp2knfefk"]
+
+[ext_resource type="Texture2D" uid="uid://kwy25urqkrhq" path="res://assets/graphics/cutscenes/img/cutscene1.png" id="1_agynh"]
+[ext_resource type="Texture2D" uid="uid://2ricoospexgn" path="res://assets/graphics/cutscenes/img/cutscene2.png" id="2_86g4h"]
+[ext_resource type="Texture2D" uid="uid://bq6qoyhvasax8" path="res://assets/graphics/cutscenes/img/cutscene3.png" id="3_vabyq"]
+[ext_resource type="Texture2D" uid="uid://dfelu64ejgd6d" path="res://assets/graphics/cutscenes/img/cutscene4.png" id="4_5yp83"]
+[ext_resource type="Texture2D" uid="uid://b62bdtcqbbbsf" path="res://assets/graphics/cutscenes/img/splash.png" id="4_wi35e"]
+[ext_resource type="Texture2D" uid="uid://b322rk3ndspia" path="res://assets/graphics/cutscenes/img/cutscene5.png" id="5_a7n8g"]
+[ext_resource type="Texture2D" uid="uid://dgrdn01nbgnry" path="res://assets/graphics/cutscenes/img/cutscene7.png" id="6_124eb"]
+[ext_resource type="Theme" uid="uid://y2k1ulo02lh" path="res://assets/other/theme.tres" id="7_hw5w0"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ussgt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_agynh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_86g4h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_vabyq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_wi35e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_5yp83")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_a7n8g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_124eb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_wi35e")
+}],
+"loop": true,
+"name": &"default",
+"speed": 0.7
+}]
+
+[node name="End" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+offset_left = -13.0
+offset_top = -8.0
+offset_right = 1175.0
+offset_bottom = 663.0
+color = Color(0.025221, 0.0384805, 0.056592, 1)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CanvasLayer"]
+position = Vector2(335, 395)
+scale = Vector2(0.3, 0.3)
+sprite_frames = SubResource("SpriteFrames_ussgt")
+autoplay = "default"
+frame_progress = 0.919347
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+offset_left = 104.0
+offset_top = 33.0
+offset_right = 555.0
+offset_bottom = 105.0
+scale = Vector2(2.11569, 1.66632)
+theme = ExtResource("7_hw5w0")
+theme_override_colors/font_color = Color(0.732686, 0.712864, 0.62421, 1)
+theme_override_font_sizes/font_size = 71
+text = "SACRIFICIUM"
+
+[node name="Label7" type="Label" parent="CanvasLayer"]
+offset_left = 669.0
+offset_top = 174.0
+offset_right = 1241.0
+offset_bottom = 215.0
+scale = Vector2(0.792799, 0.792799)
+theme = ExtResource("7_hw5w0")
+theme_override_colors/font_color = Color(0.521793, 0.705832, 1, 1)
+text = "game by DŻINSY JAKIGORSEWA"
+
+[node name="Label2" type="Label" parent="CanvasLayer"]
+offset_left = 669.0
+offset_top = 174.0
+offset_right = 923.0
+offset_bottom = 215.0
+scale = Vector2(0.792799, 0.792799)
+theme = ExtResource("7_hw5w0")
+text = "game by"
+
+[node name="Label3" type="Label" parent="CanvasLayer"]
+offset_left = 722.0
+offset_top = 264.0
+offset_right = 1294.0
+offset_bottom = 349.0
+scale = Vector2(0.588395, 0.588395)
+theme = ExtResource("7_hw5w0")
+theme_override_colors/font_color = Color(0.289, 0.21, 1, 1)
+text = "Godot Programmer: 
+IGOR ZAMOJSKI"
+
+[node name="Label4" type="Label" parent="CanvasLayer"]
+offset_left = 722.0
+offset_top = 343.0
+offset_right = 1294.0
+offset_bottom = 428.0
+scale = Vector2(0.588395, 0.588395)
+theme = ExtResource("7_hw5w0")
+theme_override_colors/font_color = Color(0.21, 1, 0.842, 1)
+text = "SFX & Graphics Designer: 
+JAKUB WOJDYŁA"
+
+[node name="Label5" type="Label" parent="CanvasLayer"]
+offset_left = 722.0
+offset_top = 415.0
+offset_right = 1294.0
+offset_bottom = 500.0
+scale = Vector2(0.588395, 0.588395)
+theme = ExtResource("7_hw5w0")
+theme_override_colors/font_color = Color(1, 0.21, 1, 1)
+text = "Story & Graphics Designer: 
+ADAM PAWLUŚ"
+
+[node name="Label6" type="Label" parent="CanvasLayer"]
+offset_left = 722.0
+offset_top = 487.0
+offset_right = 1294.0
+offset_bottom = 572.0
+scale = Vector2(0.588395, 0.588395)
+theme = ExtResource("7_hw5w0")
+theme_override_colors/font_color = Color(0.21, 1, 0.512833, 1)
+text = "Sound Designer:
+SEWERYN JANOWIAK"
+
+[node name="Label8" type="Label" parent="CanvasLayer"]
+offset_left = 722.0
+offset_top = 564.0
+offset_right = 1294.0
+offset_bottom = 649.0
+scale = Vector2(0.588395, 0.588395)
+theme = ExtResource("7_hw5w0")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 36
+text = "Gościnnie: KLAUDIA ADAMCZYK"

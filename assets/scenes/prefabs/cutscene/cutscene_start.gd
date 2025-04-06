@@ -4,7 +4,7 @@ extends Node2D
 @onready var label = $CanvasLayer/Wrapper/Label
 @onready var box_fade = $CanvasLayer/Wrapper/FgFade
 
-var main_menu_path = "res://assets/scenes/levels/level_0_tutorial.tscn" # change this
+var main_menu_path = "res://assets/scenes/levels/end.tscn"
 
 @export var chosen_cutscene: Util.CUTSCENES = Util.CUTSCENES.NONE
 @export var interact_cue = ""
@@ -103,7 +103,7 @@ func get_script_csn():
 			return [
 				Util.CUTSCENE_FLAGS.FADE_IN,
 				1.2,
-				"res://assets/graphics/cutscenes/level1/gosciu_1.png",
+				"res://assets/graphics/cutscenes/img/cutscene1.png",
 				"Przez cały czas spędzony w naszym klasztorze nauczyłeś się wszystkiego, co wiemy o klątwach.",
 				4.0,
 				"Większość twoich braci nie wytrzymała próby, ale ty pozostałeś niezłomny.",
@@ -114,7 +114,7 @@ func get_script_csn():
 				1.0,
 				"Twoje poświęcenie nie zostanie zapomniane.",
 				3.0,
-				"res://assets/graphics/cutscenes/level1/gosciu_2.png",
+				"res://assets/graphics/cutscenes/img/cutscene2.png",
 				Util.CUTSCENE_FLAGS.FADE_IN,
 				1.2,
 				"Weź ten klucz i okiełznaj klątwę w pobliskiej celi.",
@@ -125,43 +125,103 @@ func get_script_csn():
 				1.0
 			]
 		Util.CUTSCENES.LEVEL1:
+			Persistent.level1 = true
 			return [
+				"res://assets/graphics/cutscenes/img/cutscene1.png",
 				Util.CUTSCENE_FLAGS.FADE_IN,
 				1.2,
-				"res://assets/graphics/cutscenes/level1/gosciu_1.png",
-				"WIP",
+				"Pokonałeś pierwszą z klątw. To dowód odwagi i determinacji.",
+				3.0,
+				"Lecz wraz z tym zwycięstwem klątwa zamieszka w tobie, powoli zabijając ciebie.",
+				3.0,
+				"Od dziś znany jest dzień twojej śmierci.",
+				2.5,
+				"Pozbądź się plugastwa żyjącego na ziemi.",
+				2.5,
+				Util.CUTSCENE_FLAGS.FADE_OUT,
+				1.0,
+				"Nie zmarnuj swojego życia.",
+				2.5,
+				"res://assets/graphics/cutscenes/deadon/dead_in_12.png",
+				Util.CUTSCENE_FLAGS.FADE_IN,
+				2.5,
+				Util.CUTSCENE_FLAGS.FADE_OUT,
+				1.0,
+				"Czeka na ciebie nowe zlecenie.",
+				3.0,
+				"res://assets/graphics/cutscenes/img/cutscene3.png",
+				Util.CUTSCENE_FLAGS.FADE_IN,
 				1.2,
+				"Dom wygląda na pusty, ale w skrzynce wciąż lądują listy.",
+				3.0,
+				"Pisane ręką młodego chłopaka, który zmarł na początku wojny.",
+				3.0,
+				"Matkę pochowali na dniach, gdy żyła nie było możliwości zająć się klątwą.",
+				3.0,
 				Util.CUTSCENE_FLAGS.FADE_OUT,
 				1.0
 			]
 		Util.CUTSCENES.LEVEL2:
+			Persistent.level2 = true
 			return [
+				"res://assets/graphics/cutscenes/deadon/dead_in_5.png",
+				Util.CUTSCENE_FLAGS.FADE_IN,
+				2.5,
+				Util.CUTSCENE_FLAGS.FADE_OUT,
+				1.0,
+				"Czeka na ciebie nowe zlecenie.",
+				3.0,
+				"res://assets/graphics/cutscenes/img/cutscene5.png",
 				Util.CUTSCENE_FLAGS.FADE_IN,
 				1.2,
-				"res://assets/graphics/cutscenes/level1/gosciu_1.png",
-				"WIP",
-				1.2,
+				"Przed laty w kopalni doszło do wypadku, tunel zawalił się na pracujących górników.",
+				3.5,
+				"Wypadki się zdarzają, ale ten był inny.",
+				2.5,
+				"Jednego z nich można dalej usłyszeć jak pracuje w kopalni, niektórzy nawet mówili że go widzieli.",
+				3.5,
+				"Przed laty w kopalni doszło do wypadku, tunel zawalił się na pracujących górników.",
+				3.0,
 				Util.CUTSCENE_FLAGS.FADE_OUT,
-				1.0
+				1.0,
+				"To ten tunel, stąd pójdziesz już samemu. Nie chce mieć z tym nic wspólnego.",
+				3.0
 			]
 		Util.CUTSCENES.LEVEL3:
+			Persistent.level3 = true
 			return [
+				"res://assets/graphics/cutscenes/deadon/dead_in_0.png",
+				Util.CUTSCENE_FLAGS.FADE_IN,
+				2.5,
+				"",
+				Util.CUTSCENE_FLAGS.FADE_OUT,
+				1.0,
+				"Czeka na ciebie nowe zlecenie.",
+				3.0,
+				"res://assets/graphics/cutscenes/img/cutscene4.png",
 				Util.CUTSCENE_FLAGS.FADE_IN,
 				1.2,
-				"res://assets/graphics/cutscenes/level1/gosciu_1.png",
-				"WIP",
-				1.2,
+				"To był mój dom rodzinny.",
+				2.5,
+				"Nasza rodzina rozpadła się po śmierci mojego brata, spadł on z klifu za naszym domem.",
+				3.5,
+				"Ojciec widział to na własne oczy, od tamtej pory cały czas siedział na klifie.",
+				3.5,
+				"Po latach wróciłam zobaczyć co się stało z domem, ale zobaczyłam że ojciec dalej tam stoi...",
+				3.5,
 				Util.CUTSCENE_FLAGS.FADE_OUT,
-				1.0
+				1.0,
+				"Nie jest już człowiekiem.",
+				2.5
 			]
 		Util.CUTSCENES.AFTER_FINAL_BOSS:
 			return [
+				"res://assets/graphics/cutscenes/img/cutscene7.png",
 				Util.CUTSCENE_FLAGS.FADE_IN,
 				1.2,
-				"res://assets/graphics/cutscenes/level1/gosciu_1.png",
-				"WIP",
-				1.2,
+				"You win!",
+				3.0,
 				Util.CUTSCENE_FLAGS.FADE_OUT,
-				1.0,
+				2.5,
 				Util.CUTSCENE_FLAGS.TO_MAIN_MENU
 			]

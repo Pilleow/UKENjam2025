@@ -16,7 +16,7 @@ size = Vector2(56, 56)
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_jc2gy"]
 shader = ExtResource("6_dsdib")
 
-[node name="Level2a" type="Node2D"]
+[node name="Level2" type="Node2D"]
 script = ExtResource("1_p4xdc")
 rotation_dampener = 70.0
 
@@ -41,17 +41,20 @@ position = Vector2(-78, -37)
 scale = Vector2(2, 2)
 texture = ExtResource("4_kqce1")
 
-[node name="Player" parent="." instance=ExtResource("5_ehcqa")]
-position = Vector2(0, 27)
-anchor_camera = false
-init_x = -382.0
-
 [node name="Gornik" type="Sprite2D" parent="."]
 texture_filter = 3
 material = SubResource("ShaderMaterial_jc2gy")
-position = Vector2(119, -6)
+position = Vector2(109, -34)
 scale = Vector2(4, 4)
 texture = ExtResource("6_gmqny")
+
+[node name="Player" parent="." instance=ExtResource("5_ehcqa")]
+visible = false
+position = Vector2(0, 27)
+init_bgm = "res://assets/sounds/bgm/before_undertale_intro.wav"
+anchor_camera = false
+init_x = -385.0
+init_x_on_replay = -50.0
 
 [node name="Lvl1Room2" type="Sprite2D" parent="."]
 modulate = Color(0.6, 0.6, 0.6, 1)
@@ -59,6 +62,7 @@ texture_filter = 3
 position = Vector2(-14, -15)
 scale = Vector2(2, 2)
 texture = ExtResource("6_ehgfj")
+metadata/_edit_lock_ = true
 
 [node name="FightArea" parent="." instance=ExtResource("9_pvnib")]
 position = Vector2(205, 15)
@@ -66,6 +70,7 @@ scale = Vector2(1.79114, 0.522821)
 bullet_delay = 0.35
 bullet_group_delay = 0.45
 bullet_speed = 4.0
+bullet_groups_to_send = 20
 move_to_scene = "res://assets/scenes/levels/level_3c.tscn"
 
 [node name="ColorRect" type="ColorRect" parent="."]

@@ -5,7 +5,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o04cg"]
 size = Vector2(192, 192)
 
-[node name="FightArea" type="Node2D" groups=["Interactable"]]
+[node name="FightArea" type="Node2D" groups=["FightArea", "Interactable"]]
 position = Vector2(0, 1)
 script = ExtResource("1_soldb")
 

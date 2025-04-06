@@ -19,6 +19,7 @@ func _ready():
 	SignalBus.player_unlock_input.connect(unlock_movement)
 
 func _physics_process(delta: float) -> void:
+	Audio.set_pos(global_position)
 	if player_master.player_state != Util.PLAYER_STATES.DOWN:
 		return
 
