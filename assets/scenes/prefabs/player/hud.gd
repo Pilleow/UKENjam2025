@@ -62,9 +62,11 @@ func update_wrap_visibility():
 	wrap_breakBarricade.visible = (player.player_state == Util.PLAYER_STATES.BREAK_BARRICADE)
 
 func undertale_face_die():
+	if find_child("UndertalePlayer").hp <= 0:
+		return
 	player.init_bgm = ""
 	player.next_bgm = ""
-	#Audio.bgm_volume_mod_target = 0
+	Audio.play_other("porazka.wav")
 	$UndertaleWrapper/Eyes.play("dead")
 
 func interact_take_out_letter():

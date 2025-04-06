@@ -24,7 +24,7 @@ Audio="*res://assets/global/audio.gd"
 
 [display]
 
-window/size/mode=2
+window/size/mode=3
 window/size/initial_position_type=2
 window/stretch/mode="canvas_items"
 

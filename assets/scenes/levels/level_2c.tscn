@@ -51,7 +51,7 @@ texture = ExtResource("6_gmqny")
 [node name="Player" parent="." instance=ExtResource("5_ehcqa")]
 visible = false
 position = Vector2(0, 27)
-init_bgm = "res://assets/sounds/bgm/before_undertale_intro.wav"
+init_bgm = "res://assets/sounds/bgm/ambient_beat_main.wav"
 anchor_camera = false
 init_x = -385.0
 init_x_on_replay = -50.0

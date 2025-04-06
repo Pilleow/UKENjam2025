@@ -17,10 +17,11 @@ func get_interact_cue():
 	return "#Potrzebujesz klucza"
 
 func interact():
-	if Util.ITEMS.KEY in player.items:
+	if $StaticBody2D and not $StaticBody2D.is_queued_for_deletion() and Util.ITEMS.KEY in player.items:
 		player.set_state(Util.PLAYER_STATES.DOOR_OPEN)
 
 func open():
+	Audio.play_other("dzwi2.wav")
 	isOpen = true
 	Persistent.opened_gate_level_0 = true
 	$Closed.hide()

@@ -31,17 +31,20 @@ var rotation_dampener = 100.0
 func skip_cutscene_if_played():
 	match get_tree().current_scene.name:
 		"Level1":
-			if Persistent.level1:
+			if Persistent.level1 and Persistent.failed_fight:
 				init_x = init_x_on_replay
 			Persistent.level1 = true
+			Persistent.failed_fight = false
 		"Level2":
-			if Persistent.level2:
+			if Persistent.level2 and Persistent.failed_fight:
 				init_x = init_x_on_replay
 			Persistent.level2 = true
+			Persistent.failed_fight = false
 		"Level3":
-			if Persistent.level3:
+			if Persistent.level3 and Persistent.failed_fight:
 				init_x = init_x_on_replay
 			Persistent.level3 = true
+			Persistent.failed_fight = false
 
 func _ready():
 	skip_cutscene_if_played()
@@ -81,6 +84,10 @@ func _on_fade_finish():
 
 func interact_with_first_on_list():
 	for en in interactable_entities:
+		if en.is_in_group("FightArea"):
+			$DownPlayer/AnimatedSprite2D.play("down")
+			Audio.play_other("przewrot_glow.wav")
+			await get_tree().create_timer(1.5).timeout
 		if en.is_in_group("Interactable"):
 			en.interact()
 			hud.set_interacting_body(en)
@@ -132,6 +139,7 @@ func _physics_process(delta: float) -> void:
 		if died_on == -1:
 			init_bgm = ""
 			next_bgm = ""
+			Persistent.failed_fight = true
 			$HUD/DeadWrapper.show()
 			died_on = Time.get_ticks_msec()
 			hud.offset.y = 0

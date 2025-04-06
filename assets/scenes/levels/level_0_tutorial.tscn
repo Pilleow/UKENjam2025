@@ -82,7 +82,8 @@ chosen_cutscene = 1
 item = "KEY"
 
 [node name="FloatingPoppingUpLabel" parent="." instance=ExtResource("7_3e2ei")]
-position = Vector2(17, -32)
+position = Vector2(-47, -35)
+timer_seconds = 4
 texts = Array[String](["Twoje poświęcenie nie zostanie zapomniane.", "Spożyj swoją pierwszą klątwę."])
 
 [node name="ColorRect" type="ColorRect" parent="."]

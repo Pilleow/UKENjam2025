@@ -1,14 +1,14 @@
 extends Node2D
 
 @export var timer_pop_up: bool = true
-@export_range(1, 8) var timer_seconds = 5
+@export_range(1, 9998) var timer_seconds = 5
 @export var texts: Array[String] = []
 
 @onready var label = $Label
 var init_y_label = 0.0
 
 @onready var text_group = texts
-var next_label_in:float = randf_range(1, timer_seconds)
+var next_label_in:float = 2
 
 func _ready():
 	hide()

@@ -81,7 +81,7 @@ blend_mode = 2
 
 [node name="FloatingPoppingUpLabel" parent="." instance=ExtResource("8_x8381")]
 position = Vector2(683, -83)
-texts = Array[String](["“Gdybym tylko dosięgnął” ", "“Gdybym go złapał”"])
+texts = Array[String](["Gdybym tylko dosięgnął.", "Gdybym tylko go złapał."])
 
 [node name="Cutscenka" parent="." groups=["AutoInteract"] instance=ExtResource("9_dr8cg")]
 position = Vector2(6.99999, -16)

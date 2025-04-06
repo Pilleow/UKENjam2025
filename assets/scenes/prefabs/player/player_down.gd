@@ -19,7 +19,6 @@ func _ready():
 	SignalBus.player_unlock_input.connect(unlock_movement)
 
 func _physics_process(delta: float) -> void:
-	Audio.set_pos(global_position)
 	if player_master.player_state != Util.PLAYER_STATES.DOWN:
 		return
 
@@ -33,9 +32,11 @@ func _physics_process(delta: float) -> void:
 			$AnimatedSprite2D.flip_h = false
 		else:
 			$AnimatedSprite2D.flip_h = true
-		$AnimatedSprite2D.play("walking")
+		if $AnimatedSprite2D.animation != "down":
+			$AnimatedSprite2D.play("walking")
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED / 10.0)
-		$AnimatedSprite2D.play("standing")
+		if $AnimatedSprite2D.animation != "down":
+			$AnimatedSprite2D.play("standing")
 		
 	move_and_slide()

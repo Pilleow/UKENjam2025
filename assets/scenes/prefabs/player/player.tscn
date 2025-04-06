@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://cbat5l3u4tssm"]
+[gd_scene load_steps=44 format=3 uid="uid://cbat5l3u4tssm"]
 
 [ext_resource type="Script" path="res://assets/scenes/prefabs/player/player_master.gd" id="1_k58qf"]
 [ext_resource type="Script" path="res://assets/scenes/prefabs/player/player_down.gd" id="1_uagjw"]
@@ -30,6 +30,10 @@
 [ext_resource type="Texture2D" uid="uid://cqfi2y644iiyr" path="res://assets/graphics/sprites/player/player_walk2.png" id="14_v8bku"]
 [ext_resource type="Texture2D" uid="uid://ciuaj4qenpl67" path="res://assets/graphics/sprites/player/player_walk3.png" id="15_5lil7"]
 [ext_resource type="Texture2D" uid="uid://bropd0ey2pcax" path="res://assets/graphics/sprites/player/player_walk4.png" id="16_sh3nx"]
+[ext_resource type="Texture2D" uid="uid://dypffeqwgvttv" path="res://assets/graphics/sprites/player/klek1.png" id="25_agwl3"]
+[ext_resource type="Texture2D" uid="uid://eje0oqime6lt" path="res://assets/graphics/sprites/player/klek2.png" id="26_tukxg"]
+[ext_resource type="Texture2D" uid="uid://c604nh2c0gnrf" path="res://assets/graphics/sprites/player/klek3.png" id="27_cfbtv"]
+[ext_resource type="Texture2D" uid="uid://ck4swhgxmgl7u" path="res://assets/graphics/sprites/player/klek4.png" id="28_voir1"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_e5qll"]
 radius = 12.0
@@ -107,6 +111,23 @@ animations = [{
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("25_agwl3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_tukxg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_cfbtv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_voir1")
+}],
+"loop": false,
+"name": &"down",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": ExtResource("11_sgsk4")
 }, {
 "duration": 1.0,
@@ -148,7 +169,6 @@ visible = false
 script = ExtResource("2_28i0e")
 
 [node name="Fade" type="ColorRect" parent="HUD"]
-visible = false
 z_index = 730
 offset_left = -53.0
 offset_top = -435.0
@@ -370,8 +390,10 @@ texture_scale = 2.0
 texture_filter = 3
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_clgww")
-animation = &"walking"
+animation = &"down"
 autoplay = "standing"
+frame = 3
+frame_progress = 1.0
 
 [node name="Collider" type="CollisionShape2D" parent="DownPlayer"]
 visible = false

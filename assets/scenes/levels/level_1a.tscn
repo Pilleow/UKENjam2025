@@ -40,7 +40,6 @@ texture = ExtResource("2_0xw6n")
 [node name="Player" parent="." instance=ExtResource("3_udh7o")]
 position = Vector2(0, 4)
 init_bgm = "res://assets/sounds/bgm/ambient_beat_intro.wav"
-next_bgm = "res://assets/sounds/bgm/ambient_beat_main.wav"
 init_x = -123.0
 
 [node name="MoveThroughDoor" parent="." instance=ExtResource("4_co4dh")]

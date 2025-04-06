@@ -1,10 +1,24 @@
-[gd_scene load_steps=6 format=3 uid="uid://frjx6y2iwhaa"]
+[gd_scene load_steps=10 format=3 uid="uid://frjx6y2iwhaa"]
 
 [ext_resource type="PackedScene" uid="uid://cjc8cy2sfh8df" path="res://assets/scenes/prefabs/objects/wall.tscn" id="1_nw0vu"]
 [ext_resource type="Texture2D" uid="uid://u3e68iyf51f" path="res://assets/graphics/images/level1/lvl1 room3 .png" id="2_7oj3r"]
 [ext_resource type="PackedScene" uid="uid://cbat5l3u4tssm" path="res://assets/scenes/prefabs/player/player.tscn" id="3_posyn"]
 [ext_resource type="PackedScene" uid="uid://cv5wevah2b43v" path="res://assets/scenes/prefabs/fight_area/fight_area.tscn" id="4_2bdyr"]
 [ext_resource type="PackedScene" uid="uid://ba7h224kcugro" path="res://assets/scenes/prefabs/take_out_letter/take_out_letter.tscn" id="5_kuboj"]
+[ext_resource type="Texture2D" uid="uid://dp3ebgo0l6wef" path="res://assets/graphics/sprites/chars/pani.png" id="6_bnqcr"]
+[ext_resource type="Script" path="res://assets/scenes/levels/gornik.gd" id="7_ctji0"]
+[ext_resource type="PackedScene" uid="uid://cahvwaf1x143d" path="res://assets/scenes/prefabs/label/floating_popping_up_label.tscn" id="8_kc4vi"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_taai8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_bnqcr")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
 
 [node name="Level1" type="Node2D"]
 
@@ -39,6 +53,15 @@ position = Vector2(0, -3)
 init_bgm = "res://assets/sounds/bgm/ambient_beat_main.wav"
 init_x = -123.0
 
+[node name="NPC" type="AnimatedSprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.380392)
+texture_filter = 3
+position = Vector2(-29, 1)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_taai8")
+autoplay = "default"
+script = ExtResource("7_ctji0")
+
 [node name="TakeOutLetter" parent="." instance=ExtResource("5_kuboj")]
 visible = false
 position = Vector2(110, -18)
@@ -48,5 +71,10 @@ interact_cue = "Zniszcz barykadę"
 position = Vector2(126, -18)
 scale = Vector2(0.551139, 0.522821)
 bullet_group_delay = 0.5
-bullet_groups_to_send = 15
+bullet_groups_to_send = 3
 move_to_scene = "res://assets/scenes/levels/level_2a.tscn"
+
+[node name="FloatingPoppingUpLabel" parent="." instance=ExtResource("8_kc4vi")]
+position = Vector2(-28, -34)
+timer_seconds = 4
+texts = Array[String](["Nie otwieraj listu.", "Nie podchodź.", "Zostaw ten list.", "Odejdź."])

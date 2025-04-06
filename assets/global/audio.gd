@@ -1,4 +1,4 @@
-extends Node2D
+extends Node
 
 var speak_beat = []
 var speak_beat_path = "res://assets/sounds/sfx/speak_beat/"
@@ -11,6 +11,9 @@ var steps = {
 var steps_path_jaskinia = "res://assets/sounds/sfx/step/jaskinia/"
 var steps_path_pokoj = "res://assets/sounds/sfx/step/pokoj/"
 var steps_path_klif = "res://assets/sounds/sfx/step/klif/"
+
+var other_eff = {}
+var other_eff_p = "res://assets/sounds/sfx/other/"
 
 var ambient = {
 	"jaskinia": [],
@@ -27,27 +30,29 @@ var step_crack_path = "res://assets/sounds/sfx/step/stepcrack/"
 var bgm = {}
 var bgm_path = "res://assets/sounds/bgm/"
 
-func set_pos(pos):
-	global_position = pos
-
 func _ready():
-	speak_beat = load_path(speak_beat_path, 10.0)
-	step_crack = load_path(step_crack_path, 10.0)
+	speak_beat = load_path(speak_beat_path)
+	step_crack = load_path(step_crack_path)
 	
-	steps['jaskinia'] = load_path(steps_path_jaskinia, 10.0)
-	steps['pokoj'] = load_path(steps_path_pokoj, 10.0)
-	steps['klif'] = load_path(steps_path_klif, 10.0)
+	steps['jaskinia'] = load_path(steps_path_jaskinia)
+	steps['pokoj'] = load_path(steps_path_pokoj)
+	steps['klif'] = load_path(steps_path_klif)
 	
-	ambient['jaskinia'] = load_path(ambient_jaskinia, 4.0)
-	ambient['pokoj'] = load_path(ambient_pokoj, 4.0)
-	ambient['klif'] = load_path(ambient_klif, 4.0)
+	other_eff = load_path(other_eff_p, -5, true)
+	other_eff['hit.wav'].volume_db = -10.0
+	other_eff['game_end.wav'].volume_db = -20.0
 	
-	bgm = load_path(bgm_path, -6.0, true)
-	bgm['before_undertale_intro.wav'].volume_db = -10.0
-	bgm['ambient_beat_intro.wav'].volume_db = -10.0
-	bgm['ambient_beat_main.wav'].volume_db = -10.0
+	ambient['jaskinia'] = load_path(ambient_jaskinia, -5)
+	ambient['pokoj'] = load_path(ambient_pokoj, -5)
+	ambient['klif'] = load_path(ambient_klif, -5)
+	
+	bgm = load_path(bgm_path, -15.0, true)
+	
 	for b in bgm.values():
 		b.finished.connect(SignalBus.BgmFinished.emit)
+
+func play_other(p):
+	other_eff[p].play()
 
 func load_path(dir_pa, v_db = 0, named=false):
 	var dir = DirAccess.open(dir_pa)
@@ -62,7 +67,7 @@ func load_path(dir_pa, v_db = 0, named=false):
 			if not dir.current_is_dir() and (file_name.ends_with(".ogg") or file_name.ends_with(".wav") or file_name.ends_with(".mp3")):
 				var stream = load(dir_pa + file_name)
 				if stream:
-					var asp = AudioStreamPlayer2D.new()
+					var asp = AudioStreamPlayer.new()
 					asp.volume_db = v_db
 					asp.stream = stream
 					if named:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://32g674apgd36"]
+[gd_scene load_steps=10 format=3 uid="uid://32g674apgd36"]
 
 [ext_resource type="Script" path="res://assets/scenes/levels/level.gd" id="1_6umvi"]
 [ext_resource type="PackedScene" uid="uid://cjc8cy2sfh8df" path="res://assets/scenes/prefabs/objects/wall.tscn" id="2_185yr"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://b2h5kfsbvogwj" path="res://assets/graphics/images/level3/trawa.png" id="4_va848"]
 [ext_resource type="PackedScene" uid="uid://cbat5l3u4tssm" path="res://assets/scenes/prefabs/player/player.tscn" id="7_au460"]
 [ext_resource type="Texture2D" uid="uid://qxyd5fa5i08d" path="res://assets/graphics/images/level3/domek.png" id="8_mv5vg"]
+[ext_resource type="Script" path="res://assets/scenes/levels/run_bgme_nd.gd" id="9_nu5fp"]
 [ext_resource type="PackedScene" uid="uid://cahvwaf1x143d" path="res://assets/scenes/prefabs/label/floating_popping_up_label.tscn" id="9_r8k3d"]
 [ext_resource type="PackedScene" uid="uid://dlodba0505j1p" path="res://assets/scenes/prefabs/cutscene/cutscene_start.tscn" id="10_uw2rx"]
 
@@ -66,3 +67,6 @@ texts = Array[String](["“Gdybym tylko dosięgnął” ", "“Gdybym go złapa�
 position = Vector2(6.99999, -4)
 scale = Vector2(0.386084, 0.393157)
 chosen_cutscene = 5
+
+[node name="RunBGMENd" type="Node2D" parent="."]
+script = ExtResource("9_nu5fp")

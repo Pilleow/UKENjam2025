@@ -12,10 +12,8 @@ func get_interact_cue():
 	return interact_cue
 	
 func interact():
-	if has_wheel:
-		vel_x = 300.0
-	else:
-		player.fade_out_and_change_scene_to(move_to)
+	player.fade_out_and_change_scene_to(move_to)
+	Audio.play_other("dzwi3.wav")
 
 func _ready():
 	global_position.x += vel_x

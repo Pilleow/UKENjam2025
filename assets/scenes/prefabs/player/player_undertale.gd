@@ -28,6 +28,8 @@ func _ready():
 	SignalBus.player_unlock_input.connect(unlock_movement)
 
 func take_damage(dmg: int):
+	if hp > 0:
+		Audio.play_other("hit.wav")
 	hp -= dmg
 	modulate.a = float(hp) / float(max_hp)
 	if hp <= 0:
@@ -37,7 +39,6 @@ func _physics_process(delta: float) -> void:
 	if player_master.player_state != Util.PLAYER_STATES.UNDERTALE:
 		time_since_player_moved = 0
 		return
-		
 
 	time_since_player_moved += delta
 	if time_since_player_moved > NOTIFY_AFK_AFTER_SECONDS:

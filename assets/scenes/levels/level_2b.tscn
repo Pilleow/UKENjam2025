@@ -39,6 +39,7 @@ texture = ExtResource("4_5ej1c")
 [node name="Player" parent="." instance=ExtResource("7_6us6a")]
 visible = false
 position = Vector2(0, 27)
+init_bgm = "res://assets/sounds/bgm/ambient_beat_main.wav"
 anchor_camera = false
 init_x = -382.0
 
