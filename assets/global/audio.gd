@@ -31,7 +31,7 @@ var bgm = {}
 var bgm_path = "res://assets/sounds/bgm/"
 
 func _ready():
-	speak_beat = load_path(speak_beat_path)
+	speak_beat = load_path(speak_beat_path, -5)
 	step_crack = load_path(step_crack_path)
 	
 	steps['jaskinia'] = load_path(steps_path_jaskinia)

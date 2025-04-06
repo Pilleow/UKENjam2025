@@ -22,7 +22,7 @@ func _physics_process(delta: float) -> void:
 	if player_master.player_state != Util.PLAYER_STATES.DOWN:
 		return
 
-	if locked_movement:
+	if locked_movement or $AnimatedSprite2D.animation == "down":
 		return
 
 	var direction := Input.get_axis("left", "right")

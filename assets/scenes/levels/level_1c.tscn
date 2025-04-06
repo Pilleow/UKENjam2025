@@ -71,7 +71,7 @@ interact_cue = "Zniszcz barykadę"
 position = Vector2(126, -18)
 scale = Vector2(0.551139, 0.522821)
 bullet_group_delay = 0.5
-bullet_groups_to_send = 3
+bullet_groups_to_send = 15
 move_to_scene = "res://assets/scenes/levels/level_2a.tscn"
 
 [node name="FloatingPoppingUpLabel" parent="." instance=ExtResource("8_kc4vi")]

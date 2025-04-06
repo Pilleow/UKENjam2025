@@ -56,6 +56,8 @@ func get_interact_cue():
 	return interact_cue
 	
 func interact():
+	if active:
+		return
 	player.set_state(Util.PLAYER_STATES.UNDERTALE)
 	active = true
 	await get_tree().create_timer(2.0).timeout
